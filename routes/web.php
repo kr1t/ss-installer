@@ -13,3 +13,4 @@
 
 Route::resource('/register', 'RegisterController');
 Route::get('/thankyou', 'RegisterController@thankyou');
+Route::get('/engineer/export', 'RegisterController@export');

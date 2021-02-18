@@ -304,6 +304,8 @@
                                             สมัครสมาชิก
                                         </button>
                                     </div>
+
+                                    <input type="hidden" name="url" class="myUrl" value="{{ url('') }}">
                                 </div>
                             </form>
                         </div>
@@ -318,6 +320,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
+
+
     function liffInit(liffId) {
         liff.init({
             liffId

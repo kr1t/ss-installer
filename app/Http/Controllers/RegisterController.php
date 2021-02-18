@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Engineer;
 use Illuminate\Http\Request;
+use App\Exports\EngineerExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegisterController extends Controller
 {
@@ -21,6 +23,12 @@ class RegisterController extends Controller
     {
         return view('thankyou');
     }
+
+    public function export()
+    {
+        return Excel::download(new EngineerExport, 'engineer' . time() . '.xlsx');
+    }
+
 
 
 
