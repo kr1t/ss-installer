@@ -18,7 +18,10 @@ class RegisterController extends Controller
     public function index()
     {
         $provinces  = Factory::province();
-        return view('register', compact('provinces'));
+        $provinceArray = $provinces->toArray();
+
+
+        return view('register', compact('provinceArray'));
     }
 
     public function thankyou()

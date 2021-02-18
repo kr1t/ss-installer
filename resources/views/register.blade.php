@@ -18,8 +18,6 @@
 
 <body>
 
-    {{ $provinces->toArray() }}
-
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -260,15 +258,13 @@
                                                     <div class="row">
                                                         <div class="">
                                                             <select class="form-control">
-                                                                @foreach($provinces as $province)
+                                                                @foreach($provinceArray as $province)
                                                                 <option value="{{ $province['name_th'] }}">
                                                                     {{
                                                                     $province['name_th'] }}</option>
                                                                 @endforeach
                                                             </select>
-                                                            <input class="form-control" id="Inputphone" name="province"
-                                                                value="{{ old('province') }}" placeholder="กรอกจังหวัด"
-                                                                type="text" />
+
                                                         </div>
                                                     </div>
                                                 </div>
