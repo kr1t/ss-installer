@@ -12,7 +12,6 @@
             <th>history install samsung air</th>
             <th>MT</th>
             <th>source</th>
-
         </tr>
     </thead>
 

@@ -18,6 +18,9 @@
 
 <body>
 
+    {{ $provinces->toArray() }}
+
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -256,10 +259,10 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
-
                                                             <select class="form-control">
                                                                 @foreach($provinces as $province)
-                                                                <option value="{{ $province['name_th'] }}">{{
+                                                                <option value="{{ $province['name_th'] }}">
+                                                                    {{
                                                                     $province['name_th'] }}</option>
                                                                 @endforeach
                                                             </select>
