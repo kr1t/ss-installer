@@ -1,0 +1,81 @@
+
+
+@font-face {
+    font-family: 'Kittithada Roman 55 P';
+    src: url('../fonts/KittithadaRoman55P.eot');
+    src: url('../fonts/KittithadaRoman55P.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/KittithadaRoman55P.woff2') format('woff2'),
+        url('../fonts/KittithadaRoman55P.woff') format('woff'),
+        url('../fonts/KittithadaRoman55P.ttf') format('truetype'),
+        url('../fonts/KittithadaRoman55P.svg#KittithadaRoman55P') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kittithada Medium 65 P';
+    src: url('../fonts/KittithadaMedium65P.eot');
+    src: url('../fonts/KittithadaMedium65P.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/KittithadaMedium65P.woff2') format('woff2'),
+        url('../fonts/KittithadaMedium65P.woff') format('woff'),
+        url('../fonts/KittithadaMedium65P.ttf') format('truetype'),
+        url('../fonts/KittithadaMedium65P.svg#KittithadaMedium65P') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kittithada Bold 75 F';
+    src: url('../fonts/KittithadaBold75F.eot');
+    src: url('../fonts/KittithadaBold75F.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/KittithadaBold75F.woff2') format('woff2'),
+        url('../fonts/KittithadaBold75F.woff') format('woff'),
+        url('../fonts/KittithadaBold75F.ttf') format('truetype'),
+        url('../fonts/KittithadaBold75F.svg#KittithadaBold75F') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+a,a:focus ,a:hover,a:active,a:link{
+    outline-style:none;
+    box-shadow:none;
+    border-color:transparent;
+ /*   text-decoration: none;*/
+}
+
+
+
+
+img:not([src]):not([srcset]) {
+    visibility: hidden;
+}
+
+/* 
+Fixes the Firefox anomaly while images are loading
+*/
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden;
+    }
+}
+
+
+
+.container{
+    max-width: 768px;
+   
+}
+
+
+
+
+
+@passLess : '../less/';
+
+@import "@{passLess}main.less";
+

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Kittithada Roman 55 P';
+    src: url('KittithadaRoman55P.eot');
+    src: url('KittithadaRoman55P.eot?#iefix') format('embedded-opentype'),
+        url('KittithadaRoman55P.woff2') format('woff2'),
+        url('KittithadaRoman55P.woff') format('woff'),
+        url('KittithadaRoman55P.ttf') format('truetype'),
+        url('KittithadaRoman55P.svg#KittithadaRoman55P') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kittithada Medium 65 P';
+    src: url('KittithadaMedium65P.eot');
+    src: url('KittithadaMedium65P.eot?#iefix') format('embedded-opentype'),
+        url('KittithadaMedium65P.woff2') format('woff2'),
+        url('KittithadaMedium65P.woff') format('woff'),
+        url('KittithadaMedium65P.ttf') format('truetype'),
+        url('KittithadaMedium65P.svg#KittithadaMedium65P') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kittithada Bold 75 F';
+    src: url('KittithadaBold75F.eot');
+    src: url('KittithadaBold75F.eot?#iefix') format('embedded-opentype'),
+        url('KittithadaBold75F.woff2') format('woff2'),
+        url('KittithadaBold75F.woff') format('woff'),
+        url('KittithadaBold75F.ttf') format('truetype'),
+        url('KittithadaBold75F.svg#KittithadaBold75F') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

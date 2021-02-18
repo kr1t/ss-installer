@@ -1,0 +1,1397 @@
+a,
+a:focus,
+a:hover,
+a:active,
+a:link {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  /*   text-decoration: none;*/
+}
+img:not([src]):not([srcset]) {
+  visibility: hidden;
+}
+/* 
+Fixes the Firefox anomaly while images are loading
+*/
+@-moz-document url-prefix() {
+  img:-moz-loading {
+    visibility: hidden;
+  }
+}
+.container {
+  max-width: 1170px;
+}
+@media (max-width: 1199px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (max-width: 991px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 720px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@media (max-width: 575px) {
+  .container {
+    max-width: 540px;
+  }
+}
+/* LESS Document */
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+a img {
+  border: 0;
+}
+:focus {
+  outline: 0;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+/* start commented backslash hack \*/
+* html .clearfix {
+  height: 1%;
+}
+.clearfix {
+  display: block;
+}
+/* close commented backslash hack */
+.img-responsive {
+  display: block;
+  width: 100%;
+}
+.img-responsive-max {
+  display: block;
+  max-width: 100%;
+}
+@font-face {
+  font-family: 'Anuphan';
+  src: url('../fonts/Anuphan-Medium.eot');
+  src: url('../fonts/Anuphan-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/Anuphan-Medium.woff2') format('woff2'), url('../fonts/Anuphan-Medium.woff') format('woff'), url('../fonts/Anuphan-Medium.ttf') format('truetype'), url('../fonts/Anuphan-Medium.svg#Anuphan-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Anuphan';
+  src: url('../fonts/Anuphan-Bold.eot');
+  src: url('../fonts/Anuphan-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Anuphan-Bold.woff2') format('woff2'), url('../fonts/Anuphan-Bold.woff') format('woff'), url('../fonts/Anuphan-Bold.ttf') format('truetype'), url('../fonts/Anuphan-Bold.svg#Anuphan-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonXReg.eot');
+  src: url('../fonts/DBHelvethaicaMonXReg.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonXReg.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonXReg.woff') format('woff'), url('../fonts/DBHelvethaicaMonXReg.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonXReg.svg#DBHelvethaicaMonXReg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonX-75Bd.eot');
+  src: url('../fonts/DBHelvethaicaMonX-75Bd.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonX-75Bd.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonX-75Bd.woff') format('woff'), url('../fonts/DBHelvethaicaMonX-75Bd.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonX-75Bd.svg#DBHelvethaicaMonX-75Bd') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonX-76BdIt.eot');
+  src: url('../fonts/DBHelvethaicaMonX-76BdIt.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonX-76BdIt.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonX-76BdIt.woff') format('woff'), url('../fonts/DBHelvethaicaMonX-76BdIt.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonX-76BdIt.svg#DBHelvethaicaMonX-76BdIt') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonX-86BlkIt.eot');
+  src: url('../fonts/DBHelvethaicaMonX-86BlkIt.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonX-86BlkIt.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonX-86BlkIt.woff') format('woff'), url('../fonts/DBHelvethaicaMonX-86BlkIt.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonX-86BlkIt.svg#DBHelvethaicaMonX-86BlkIt') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonX-66MedIt.eot');
+  src: url('../fonts/DBHelvethaicaMonX-66MedIt.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonX-66MedIt.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonX-66MedIt.woff') format('woff'), url('../fonts/DBHelvethaicaMonX-66MedIt.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonX-66MedIt.svg#DBHelvethaicaMonX-66MedIt') format('svg');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'DBHelvethaicaMonX';
+  src: url('../fonts/DBHelvethaicaMonX-Med.eot');
+  src: url('../fonts/DBHelvethaicaMonX-Med.eot?#iefix') format('embedded-opentype'), url('../fonts/DBHelvethaicaMonX-Med.woff2') format('woff2'), url('../fonts/DBHelvethaicaMonX-Med.woff') format('woff'), url('../fonts/DBHelvethaicaMonX-Med.ttf') format('truetype'), url('../fonts/DBHelvethaicaMonX-Med.svg#DBHelvethaicaMonX-Med') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+.content-area .article.page.full .article-page--inner {
+  width: 100% !important;
+}
+@media (min-width: 768px) {
+  .without-banner .content-area .pos-content-area {
+    grid-column: 0.4 !important;
+  }
+}
+.pos-content-area {
+  padding: 0 !important;
+  grid-column: 0 !important;
+}
+.article-page--inner {
+  width: 100% !important;
+}
+#month10-12 {
+  background: #b2881f url(https://www.s-momclub.com/sites/default/files/2021-01/bg.png) no-repeat top center;
+  background-size: contain;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: 'Anuphan-Medium';
+  line-height: 1.5;
+}
+@media (max-width: 1600px) {
+  #month10-12 {
+    padding-top: 6.25vw;
+    padding-bottom: 6.25vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 {
+    padding-top: 0vw;
+    padding-bottom: 6.51041667vw;
+    background: #b2881f;
+  }
+}
+#month10-12 h1,
+#month10-12 h2,
+#month10-12 h3,
+#month10-12 h4,
+#month10-12 h5,
+#month10-12 h6 {
+  font-family: 'Anuphan-Medium';
+}
+#month10-12 * {
+  box-sizing: border-box;
+}
+#month10-12 .img-fluid {
+  max-width: 100%;
+  display: block;
+}
+#month10-12 .month10-12--wrap {
+  width: 1388px;
+  margin: 0 auto;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month10-12--wrap {
+    width: 86.75vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month10-12--wrap {
+    width: 100%;
+  }
+}
+#month10-12 .month-s01 {
+  width: 100%;
+  position: relative;
+}
+#month10-12 .month-s01--head {
+  background: url('https://www.s-momclub.com/sites/default/files/2021-01/s1-month-head-d-10-12.png') no-repeat bottom center;
+  width: 100%;
+  height: 205px;
+  background-size: contain;
+  text-indent: -9999px;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s01--head {
+    height: 12.8125vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s01--head {
+    background-image: url('https://www.s-momclub.com/sites/default/files/2021-01/s1-month-head-m-10-12.png');
+    height: 27.47395833vw;
+  }
+}
+#month10-12 .month-s01--body {
+  background: url('https://www.s-momclub.com/sites/default/files/2021-01/s1-month-body-d.png') no-repeat top center;
+  width: 100%;
+  height: 870px;
+  background-size: contain;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s01--body {
+    height: 54.375vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s01--body {
+    background-image: url('https://www.s-momclub.com/sites/default/files/2021-01/s1-month-body-m.png');
+    height: 101.43229167vw;
+  }
+}
+#month10-12 .month-s01--body .text {
+  font-size: 23px;
+  color: #232f65;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 60px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s01--body .text {
+    font-size: 1.4375vw;
+    width: 60vw;
+    padding-top: 3.75vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s01--body .text {
+    font-size: 3.64583333vw;
+    width: 100%;
+    padding-left: 7.8125vw;
+    padding-right: 7.8125vw;
+    padding-top: 3.90625vw;
+    padding-bottom: 3.90625vw;
+  }
+}
+#month10-12 .month-s01--body .pic {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 870px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s01--body .pic {
+    margin-top: 1.25vw;
+    width: 54.375vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s01--body .pic {
+    margin-top: 0vw;
+    width: 75.52083333vw;
+  }
+}
+#month10-12 .month-s02 {
+  background: #fce6a3 url('https://www.s-momclub.com/sites/default/files/2021-01/s2-month-bg-d.png') no-repeat top center;
+  width: 100%;
+  height: auto;
+  background-size: contain;
+  padding-left: 35px;
+  padding-right: 35px;
+  position: relative;
+  padding-top: 35px;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 16px;
+  -webkit-border-bottom-left-radius: 16px;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 16px;
+  -moz-border-radius-bottomleft: 16px;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 {
+    padding-left: 2.1875vw;
+    padding-right: 2.1875vw;
+    padding-top: 2.1875vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 {
+    background-image: url('https://www.s-momclub.com/sites/default/files/2021-01/s2-month-bg-m.png');
+    padding-right: 2.60416667vw;
+    padding-top: 3.90625vw;
+  }
+}
+#month10-12 .month-s02 .month-s02--head {
+  background: url('https://www.s-momclub.com/sites/default/files/2021-01/s2-month-head-d-10-12.png') no-repeat bottom center;
+  width: 668px;
+  height: 161px;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: auto;
+  text-indent: -9999px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  -o-transform: translate(-50%, 0%);
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02--head {
+    width: 41.75vw;
+    height: 10.0625vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02--head {
+    width: 76.04166667vw;
+    height: 18.22916667vw;
+  }
+}
+#month10-12 .month-s02 .month-s02-remark {
+  font-size: 21px;
+  padding-left: 120px;
+  padding-right: 120px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #6f531d;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-remark {
+    font-size: 1.3125vw;
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+    padding-top: 3.125vw;
+    padding-bottom: 3.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-remark {
+    font-size: 3.64583333vw;
+    padding-left: 5.20833333vw;
+    padding-right: 5.20833333vw;
+    padding-top: 3.90625vw;
+    padding-bottom: 3.90625vw;
+  }
+}
+#month10-12 .month-s02 .month-s02-remark .text-head {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.2em;
+}
+#month10-12 .month-s02 .month-s02-remark strong {
+  font-weight: bold;
+}
+#month10-12 .month-s02 .month-s02-container {
+  width: 100%;
+  background: #fef9ea;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding-top: 160px;
+  padding-bottom: 80px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-container {
+    padding-top: 10vw;
+    padding-bottom: 5vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-container {
+    padding-top: 20.83333333vw;
+    padding-bottom: 10.41666667vw;
+  }
+}
+#month10-12 .month-s02 .line-box {
+  width: 100%;
+  background: url('https://www.s-momclub.com/sites/default/files/2021-01/month7-9/line.png') no-repeat center center;
+  height: 32px;
+  background-size: contain;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .line-box {
+    margin-top: 2.5vw;
+    margin-bottom: 3.75vw;
+    height: 2vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .line-box {
+    height: 32px;
+    background-size: auto;
+    margin-top: 5.20833333vw;
+    margin-bottom: 7.8125vw;
+  }
+}
+#month10-12 .month-s02 .month-s02-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-box {
+    padding-left: 1.875vw;
+    padding-right: 1.875vw;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-pic {
+  -webkit-flex: 0 0 40%;
+  -ms-flex: 0 0 40%;
+  flex: 0 0 40%;
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-pic {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-pic .wrap-pic {
+  width: 428px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: block;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-box .col-pic .wrap-pic {
+    margin-top: 3.125vw;
+    width: 26.75vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-pic .wrap-pic {
+    display: none;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-pic .wrap-pic-m {
+  display: none;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-pic .wrap-pic-m {
+    display: block;
+    text-align: center;
+    width: 75.52083333vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-text {
+  -webkit-flex: 0 0 60%;
+  -ms-flex: 0 0 60%;
+  flex: 0 0 60%;
+  padding: 20px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-box .col-text {
+    padding: 1.25vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-text {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-text .head {
+  background: url('https://www.s-momclub.com/sites/default/files/2021-01/s2-head-01-d.png') no-repeat left center;
+  width: 682px;
+  height: 58px;
+  display: block;
+  background-size: contain;
+  line-height: 58px;
+  padding-left: 105px;
+  font-size: 32px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-box .col-text .head {
+    width: 42.625vw;
+    height: 3.625vw;
+    line-height: 3.625vw;
+    padding-left: 6.5625vw;
+    font-size: 2vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-text .head {
+    width: 87.5vw;
+    height: 8.07291667vw;
+    line-height: 8.07291667vw;
+    padding-left: 13.671875vw;
+    font-size: 4.16666667vw;
+    margin-top: 3.90625vw;
+    background-image: url('https://www.s-momclub.com/sites/default/files/2021-01/s2-head-01-m.png');
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body {
+  font-size: 21px;
+  color: #6f531d;
+  font-weight: 300;
+  line-height: 1.3em;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-s02 .month-s02-box .col-text .body {
+    font-size: 1.25vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-s02 .month-s02-box .col-text .body {
+    font-size: 3.64583333vw;
+  }
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body h4 {
+  margin: 0;
+  color: #122564;
+  margin-top: 1em;
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body ul {
+  margin: 0;
+  padding: 0;
+  list-style: disc;
+  margin-left: 1em;
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body ul li {
+  margin-bottom: 0.2em;
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body ol {
+  margin: 0;
+  padding: 0;
+  list-style: decimal;
+  margin-left: 1em;
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body ol li {
+  margin-bottom: 0.2em;
+}
+#month10-12 .month-s02 .month-s02-box .col-text .body .rescomment {
+  font-size: 0.92em;
+}
+#month10-12 .month-other {
+  padding-top: 80px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-other {
+    padding-top: 5vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-other {
+    padding-left: 7.8125vw;
+    padding-right: 7.8125vw;
+  }
+}
+#month10-12 .month-other h3 {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-size: 26px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-other h3 {
+    font-size: 1.625vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-other h3 {
+    font-size: 3.38541667vw;
+  }
+}
+#month10-12 .month-other ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#month10-12 .month-other ul li {
+  margin-top: 0.5em;
+  font-size: 21px;
+}
+@media (max-width: 1600px) {
+  #month10-12 .month-other ul li {
+    font-size: 1.3125vw;
+  }
+}
+@media (max-width: 767px) {
+  #month10-12 .month-other ul li {
+    font-size: 3.64583333vw;
+  }
+}
+#month10-12 .month-other ul li a {
+  color: #ffffff;
+}
+#s-pregnancy {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/bg-pregnancy_2.png") no-repeat top center;
+  background-size: cover;
+  padding-top: 30px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: "Anuphan" !important;
+  line-height: 1.5;
+  padding-bottom: 1vw;
+}
+@media (max-width: 767px) {
+  #s-pregnancy {
+    padding-top: 40px;
+  }
+}
+#s-pregnancy h1,
+#s-pregnancy h2,
+#s-pregnancy h3,
+#s-pregnancy h4,
+#s-pregnancy h5,
+#s-pregnancy h6 {
+  font-family: "Anuphan" !important;
+}
+#s-pregnancy .img-fluid {
+  max-width: 100%;
+  display: block;
+}
+#s-pregnancy * {
+  box-sizing: border-box;
+}
+#s-pregnancy .pro-c-s01 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnan-bg-in.png") no-repeat top center;
+  background-size: contain;
+  width: 100%;
+  height: 1371px;
+  position: relative;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s01 {
+    height: 85.6875vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s01 {
+    background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnan-bg-in-mb.png") no-repeat top center;
+    background-size: contain;
+    height: 191.33333333vw;
+    z-index: 1;
+  }
+}
+#s-pregnancy .pro-c-s01 h3 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/text-head-001.png") no-repeat top center;
+  background-size: contain;
+  height: 79px;
+  width: 100%;
+  text-indent: -9999px;
+  position: relative;
+  top: 14%;
+  margin: 0 auto;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s01 h3 {
+    height: 4.9375vw;
+    width: 50.625vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s01 h3 {
+    background: url("https://www.s-momclub.com/sites/default/files/2021-02/text-head-001-mb.png") no-repeat top center;
+    background-size: contain;
+    width: 48.16666667vw;
+    height: 17.25vw;
+    top: 8%;
+  }
+}
+#s-pregnancy .pro-c-s01 h4 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/text-head-01.png") no-repeat top center;
+  background-size: contain;
+  position: relative;
+  top: 14%;
+  margin: 0 auto;
+  height: 49px;
+  width: 100%;
+  text-indent: -9999px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s01 h4 {
+    height: 3.0625vw;
+    width: 55.5625vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s01 h4 {
+    background: url("https://www.s-momclub.com/sites/default/files/2021-02/text-head-01-mb.png") no-repeat top center;
+    background-size: contain;
+    width: 59.41666667vw;
+    height: 12.5vw;
+    top: 9%;
+  }
+}
+#s-pregnancy .pro-c-s01 .p1 {
+  position: relative;
+  font-size: 20px;
+  color: #fff;
+  margin: 0 auto;
+  width: 70%;
+  top: 64%;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s01 .p1 {
+    font-size: 1.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s01 .p1 {
+    font-size: 2.60416667vw;
+    top: 46%;
+    width: 80%;
+  }
+}
+#s-pregnancy .pro-c-s01 .p2 {
+  position: relative;
+  font-size: 20px;
+  color: #fff;
+  margin: 0 auto;
+  width: 70%;
+  top: 69%;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s01 .p2 {
+    font-size: 1.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s01 .p2 {
+    font-size: 2.60416667vw;
+    top: 47%;
+    width: 80%;
+  }
+}
+#s-pregnancy .pro-c-s01 h5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: -9999px;
+}
+#s-pregnancy .pro-c-s02 {
+  z-index: 3;
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-wrap {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  z-index: 3;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-wrap {
+    width: 80vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-wrap {
+    width: 100%;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-wrap .pro-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-wrap .pro-row {
+    margin-left: -1.25vw;
+    margin-right: -1.25vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-wrap .pro-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+#s-pregnancy .pro-c-s02 .col-50 {
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .col-50 {
+    padding-left: 1.25vw;
+    padding-right: 1.25vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .col-50 {
+    padding-right: 0;
+    padding-left: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_02.png") no-repeat;
+  width: 100%;
+  height: 925px;
+  margin-top: 40px;
+  position: relative;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 {
+    height: 57.8125vw;
+    margin-top: 1.25vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 {
+    width: 100%;
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_02-mb.png");
+    height: 140.25vw;
+    margin: 0 auto;
+    background-position: center;
+    top: -75px;
+    z-index: 2;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head {
+  width: 100%;
+  height: 160px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  text-align: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head {
+    height: 10vw;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head h3 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_02-head.png") no-repeat;
+  background-size: contain;
+  width: 509px;
+  height: 41px;
+  color: transparent;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head h3 {
+    width: 31.8125vw;
+    height: 2.5625vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head h3 {
+    width: 66.27604167vw;
+    height: 5.33854167vw;
+    margin-top: 49%;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head h4 {
+  display: none;
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .head h4 {
+    display: block;
+    font-size: 4.42708333vw;
+    color: #3c2313;
+    line-height: 1.2em;
+    position: absolute;
+    top: 15.64537158vw;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .text {
+  padding: 0 35px;
+  position: absolute;
+  top: 715px;
+  left: 0;
+  width: 100%;
+  font-size: 18px;
+  color: #3c2313;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .text {
+    padding-left: 2.1875vw;
+    padding-right: 2.1875vw;
+    top: 44.6875vw;
+    font-size: 1.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .text {
+    font-size: 2.60416667vw;
+    padding-left: 9.11458333vw;
+    padding-right: 9.11458333vw;
+    top: 114.58333333vw;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .btn {
+  width: 620px;
+  height: 110px;
+  display: block;
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/btn-s2-d.png") no-repeat 0 0;
+  position: absolute;
+  bottom: -70px;
+  left: 0;
+  text-indent: -9999px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .btn {
+    width: 38.75vw;
+    height: 6.875vw;
+    bottom: -4.375vw;
+    background-size: 100%;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col1 .btn {
+    width: 80.72916667vw;
+    height: 14.32291667vw;
+    bottom: 9.11458333vw;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col1 .btn:hover {
+  background-position: 0 100%;
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_03.png") no-repeat;
+  width: 100%;
+  height: 925px;
+  margin-top: 40px;
+  position: relative;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 {
+    height: 57.8125vw;
+    margin-top: 1.25vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 {
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_03-mb.png");
+    height: 140.91666667vw;
+    margin-top: -10vw;
+    background-size: contain;
+    background-position: center;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 .head {
+  width: 100%;
+  height: 160px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  text-align: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .head {
+    height: 10vw;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 .head h3 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_03_head.png") no-repeat;
+  background-size: contain;
+  width: 469px;
+  height: 82px;
+  color: transparent;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .head h3 {
+    width: 29.3125vw;
+    height: 5.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .head h3 {
+    width: 61.06770833vw;
+    height: 10.67708333vw;
+    margin-top: 16.92708333vw;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 .text {
+  padding: 0 35px;
+  position: absolute;
+  top: 527px;
+  left: 0;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .text {
+    padding-left: 2.1875vw;
+    padding-right: 2.1875vw;
+    top: 32.9375vw;
+    font-size: 1.125vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .text {
+    font-size: 2.47395833vw;
+    padding-left: 9.11458333vw;
+    padding-right: 9.11458333vw;
+    top: 79.42708333vw;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 .btn {
+  width: 620px;
+  height: 110px;
+  display: block;
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/btn-s2-d.png") no-repeat 0 0;
+  position: absolute;
+  bottom: -70px;
+  left: 0;
+  text-indent: -9999px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s02 .pro-c-s02-col2 .btn {
+    width: 38.75vw;
+    height: 6.875vw;
+    bottom: -4.375vw;
+    background-size: 100%;
+  }
+}
+#s-pregnancy .pro-c-s02 .pro-c-s02-col2 .btn:hover {
+  background-position: 0 100%;
+}
+#s-pregnancy .pro-c-s03 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_04.png") no-repeat top center;
+  background-size: contain;
+  width: 100%;
+  height: 1044px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 {
+    height: 65.25vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 {
+    height: 213.33333333vw;
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_04-mb.png");
+    z-index: 5;
+    position: relative;
+    margin-top: -70px;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap {
+    width: 80vw;
+    padding-top: 3.75vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap {
+    width: 100%;
+    padding-top: 3.75vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-3 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_04_head.png") no-repeat;
+  background-size: contain;
+  width: 674px;
+  height: 62px;
+  margin: 0 auto;
+  margin-top: 116px;
+  color: transparent;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-3 {
+    margin-top: 7.25vw;
+    width: 42.125vw;
+    height: 3.875vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-3 {
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_04_head-mb.png");
+    margin-top: 22.5vw;
+    width: 65.58333333vw;
+    height: 13.5vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-4 {
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_05_head.png") no-repeat;
+  background-size: contain;
+  width: 894px;
+  height: 54px;
+  margin: 0 auto;
+  margin-top: 60px;
+  color: transparent;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-4 {
+    margin-top: 2.8125vw;
+    width: 55.875vw;
+    height: 3.375vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .h-4 {
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy_content_05_head-mb.png");
+    width: 68.58333333vw;
+    height: 13.58333333vw;
+    margin-top: 13.02083333vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .p-4 {
+  width: 65%;
+  margin: 0 auto;
+  font-size: 19px;
+  margin-top: 15px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .p-4 {
+    font-size: 1.1875vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .p-4 {
+    font-size: 2.47395833vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row {
+    margin-left: -0.9375vw;
+    margin-right: -0.9375vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row {
+    margin: 0;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row .col {
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row .col {
+    padding-left: 0.9375vw;
+    padding-right: 0.9375vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .pro-row .col {
+    padding: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro {
+  position: relative;
+  color: #3c2313;
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro h3 {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: absolute;
+  top: 340px;
+  left: 0;
+  text-align: center;
+  font-size: 40px;
+  color: #ffffff;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro h3 {
+    padding-left: 1.25vw;
+    padding-right: 1.25vw;
+    top: 21.25vw;
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro h3 {
+    text-align: left;
+    font-size: 4.6875vw;
+    top: 6.51041667vw;
+    padding-left: 50%;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro em {
+  display: block;
+  width: 345px;
+  height: 107px;
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/btn-s3-d.png") no-repeat center center;
+  position: absolute;
+  top: 460px;
+  right: -25px;
+  text-indent: -9999px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro em {
+    width: 21.5625vw;
+    height: 6.6875vw;
+    top: 28.75vw;
+    right: -1.5625vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro em {
+    right: 0;
+    width: 50.78125vw;
+    height: 12.23958333vw;
+    background-image: url("https://www.s-momclub.com/sites/default/files/2021-02/btn-s3-m.png");
+    top: 19.53125vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro:hover em {
+  -webkit-opacity: 0.85;
+  -moz-opacity: 0.85;
+  opacity: 0.85;
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-01 {
+  width: 557px;
+  height: 264px;
+  display: block;
+  position: relative;
+  background: url("https://www.s-momclub.com/sites/default/files/2021-02/s-pregnancy/s-pregnancy_content_04_01.png") no-repeat center center;
+  margin: 0 auto;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-01 {
+    width: 34.8125vw;
+    height: 16.5vw;
+    background-size: contain;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-01 {
+    width: 100%;
+    height: 34.375vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-01 em {
+    top: 26.04166667vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-01 h3 {
+    top: 13.02083333vw;
+  }
+}
+#s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-02 {
+  display: block;
+  position: relative;
+  font-size: 19px;
+  margin: 0 auto;
+  left: -39px;
+}
+@media (max-width: 1600px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-02 {
+    padding-left: 2.1875vw;
+    padding-right: 2.1875vw;
+    font-size: 1.1875vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-02 {
+    font-size: 2.86458333vw;
+    padding-left: 9.11458333vw;
+    padding-right: 9.11458333vw;
+  }
+}
+@media (max-width: 767px) {
+  #s-pregnancy .pro-c-s03 .pro-c-s03-wrap .item-pro-02 {
+    width: 100%;
+    height: 42.1875vw;
+    left: 0;
+    font-size: 2.60416667vw;
+  }
+}

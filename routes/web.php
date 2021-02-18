@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/register', 'RegisterController');
+Route::get('/thankyou', 'RegisterController@thankyou');
