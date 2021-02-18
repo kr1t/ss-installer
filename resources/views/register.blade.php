@@ -256,6 +256,13 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
+
+                                                            <select class="form-control">
+                                                                @foreach($provinces as $province)
+                                                                <option value="{{ $province['name_th'] }}">{{
+                                                                    $province['name_th'] }}</option>
+                                                                @endforeach
+                                                            </select>
                                                             <input class="form-control" id="Inputphone" name="province"
                                                                 value="{{ old('province') }}" placeholder="กรอกจังหวัด"
                                                                 type="text" />
@@ -316,7 +323,8 @@
     </div>
 </body>
 
-<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<!-- <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>

@@ -6,6 +6,7 @@ use App\Engineer;
 use Illuminate\Http\Request;
 use App\Exports\EngineerExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PA\ProvinceTh\Factory;
 
 class RegisterController extends Controller
 {
@@ -16,7 +17,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('register');
+        $provinces  = Factory::province();
+        return view('register', compact('provinces'));
     }
 
     public function thankyou()
