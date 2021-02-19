@@ -27,6 +27,9 @@ class CreateEngineersTable extends Migration
             $table->string('history_install');
             $table->string('month');
             $table->string('line_uid');
+            $table->integer('point')->default(0);
+            $table->string('installer_id')->nullable();
+
             $table->timestamps();
         });
     }

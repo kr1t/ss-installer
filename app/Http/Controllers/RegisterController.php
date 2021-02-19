@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Engineer;
 use Illuminate\Http\Request;
 use App\Exports\EngineerExport;
+use App\Imports\EngineerImport;
+
 use Maatwebsite\Excel\Facades\Excel;
 use PA\ProvinceTh\Factory;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -27,16 +30,34 @@ class RegisterController extends Controller
     {
         return view('thankyou');
     }
-
-    public function export()
+    public function registered()
     {
-
-        return Excel::download(new EngineerExport, 'engineer' . time() . '.xlsx');
+        return view('registered');
     }
 
 
+    public function export(Request $request)
+    {
+        return Excel::download(new EngineerExport, 'installer' . time() . '.xlsx');
+    }
+    public function import()
+    {
+
+        Excel::import(new EngineerImport, request()->file('file'));
+
+        return back();
+    }
 
 
+    public function checkRegister(Request $request)
+    {
+        $count = Engineer::where('line_uid', $request->line_uid)->count();
+
+        return [
+            "status" =>
+            $count ? true : false
+        ];
+    }
     /**
      * Store a newly created resource in storage.
      *

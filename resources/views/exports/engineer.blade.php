@@ -12,6 +12,8 @@
             <th>history install samsung air</th>
             <th>MT</th>
             <th>source</th>
+            <th>Created At</th>
+
         </tr>
     </thead>
 
@@ -29,6 +31,8 @@
             <td>{{ isset($engineer->month) ?strval($engineer->month.' ต่อเดือน'): '' }}</td>
             <td>y</td>
             <td>0</td>
+            <td>{{ isset($engineer->created_at) ?strval($engineer->created_at): '' }}</td>
+
         </tr>
         @endforeach
     </tbody>

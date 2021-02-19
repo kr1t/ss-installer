@@ -21,7 +21,7 @@
 
 
 
-    <div class="samsung-form">
+    <div class="samsung-form" style="display: none;">
         @if (!$errors->any())
 
         <div class="container term" id="term">
@@ -329,7 +329,7 @@
                                                                 class="form-control @error('history_install') is-invalid @enderror"
                                                                 id="Inputphone" name="history_install"
                                                                 placeholder="อายุงาน"
-                                                                value="{{ old('history_install') }}" type="text" />
+                                                                value="{{ old('history_install') }}" type="tel" />
 
                                                             @error('history_install')
                                                             <div class="invalid-feedback text-danger pb-2">
@@ -348,7 +348,7 @@
                                                             <input
                                                                 class="form-control @error('month') is-invalid @enderror"
                                                                 id="Inputphone" name="month" value="{{ old('month') }}"
-                                                                placeholder="จำนวนเครื่องที่ติดตั้ง" type="text" />
+                                                                placeholder="จำนวนเครื่องที่ติดตั้ง" type="tel" />
 
                                                             @error('month')
                                                             <div class="invalid-feedback text-danger pb-2">
@@ -382,13 +382,14 @@
 </body>
 
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
+<link rel="stylesheet" href="https://carlosbonetti.github.io/jquery-loading/styles.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+<script src="https://unpkg.com/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
 <script>
 
-
     function liffInit(liffId) {
+                $('body').loading();
+
         liff.init({
             liffId
         })
@@ -397,7 +398,15 @@
                     liff
                         .getProfile()
                         .then(profile => {
+
+                            if(!liff.isInClient()){
+                                window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
+                            }
+
+
                             $('.uid').val(profile.userId);
+                            checkRegister(profile.userId)
+
                         })
                         .catch(err => console.error(err));
                 } else {
@@ -409,6 +418,29 @@
             });
     }
 
+    function checkRegister(uid) {
+        var settings = {
+            "url": '{{ url('/checkRegister') }}'+ `?line_uid=${uid}` ,
+
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+
+            if(response.status){
+                window.location.href = '{{ url('/registered') }}'
+            }
+
+            $('.samsung-form').show()
+
+                    $('body').loading('stop');
+
+        });
+    }
 
     $(document).ready(function () {
         liffInit('1655673420-lYR3d0Bj')

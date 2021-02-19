@@ -30,44 +30,10 @@
                 ทางเราจะส่งข้อมูลให้อีกครั้งผ่านทาง <br> Line : ชมรมช่างแอร์ซัมซุง <br>รอติดตามอัพเดตและสิทธิพิเศษดีๆ
                 ได้เลย
             </p>
-            <div class="w-100 mt-50">
-                <button class="btn btn-light w-100 closeBtn">ปิด</button>
-            </div>
+
         </div>
     </div>
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <script>
-
-
-        function liffInit(liffId) {
-            liff.init({
-                liffId
-            })
-                .then(() => {
-                    if (liff.isLoggedIn()) {
-                        console.log('user is login')
-                    } else {
-                        liff.login();
-                    }
-                })
-                .catch(err => {
-                    console.log(err.code, err.message);
-                });
-        }
-
-
-        $(document).ready(function () {
-            liffInit('1655673420-8nAvmbGO')
-
-            $('.closeBtn').click(function () {
-                liff.closeWindow()
-            })
-
-        })
-    </script>
 </body>
 
 </html>
