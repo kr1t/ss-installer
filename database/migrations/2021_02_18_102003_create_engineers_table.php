@@ -23,7 +23,7 @@ class CreateEngineersTable extends Migration
             $table->string('tel');
             $table->tinyInteger('type_of_work');
             $table->string('shop')->nullable();
-            $table->string('province');
+            $table->integer('province');
             $table->string('history_install');
             $table->string('month');
             $table->string('line_uid');

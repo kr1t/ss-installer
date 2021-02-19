@@ -20,7 +20,6 @@ class RegisterController extends Controller
         $provinces  = Factory::province();
         $provinceArray = $provinces->toArray();
 
-
         return view('register', compact('provinceArray'));
     }
 
@@ -31,6 +30,7 @@ class RegisterController extends Controller
 
     public function export()
     {
+
         return Excel::download(new EngineerExport, 'engineer' . time() . '.xlsx');
     }
 
@@ -65,8 +65,8 @@ class RegisterController extends Controller
                 "last_name_en.alpha" => "รูปแบบชื่อ (ภาษาอังกฤษ) ไม่ถูกต้อง",
                 "first_name_th.required" => "กรุณากรอกชื่อจริงภาษาไทย",
                 "last_name_th.required" => "กรุณากรอกนามสกุลภาษาไทย",
-                "first_name_en.required" => "กรุณากรอกนามสกุลภาษาอังกฤษ",
-                "last_name_en.required" => "กรุณากรอกชื่อจริงภาษาอังกฤษ",
+                "first_name_en.required" => "กรุณากรอกชื่อจริงภาษาอังกฤษ",
+                "last_name_en.required" => "กรุณากรอกนามสกุลภาษาอังกฤษ",
                 "first_name_th.max" => "กรุณากรอกชื่อจริงภาษาไทย ไม่เกิน 255 ตัวอักษร",
                 "last_name_th.max" => "กรุณากรอกนามสกุลภาษาไทย  ไม่เกิน 255 ตัวอักษร",
                 "first_name_en.max" => "กรุณากรอกนามสกุลภาษาอังกฤษ  ไม่เกิน 255 ตัวอักษร",
@@ -74,12 +74,12 @@ class RegisterController extends Controller
                 "email.required" => 'กรุณากรอกอีเมล',
                 "email.required" => 'กรุณากรอกอีเมล',
                 "email.unique" => 'อีเมลถูกใช้แล้ว',
-                "tel.required" => 'กรุณากรอกเบอร์โทร',
+                "tel.required" => 'กรุณากรอกเบอร์โทรศัพท์',
                 "tel.max" => 'รูปแบบเบอร์โทรไม่ถูกต้อง',
                 "tel.min" => 'รูปแบบเบอร์โทรไม่ถูกต้อง',
                 "type_of_work.required" => 'กรุณาระบุรูปแบบงานที่ทำ',
                 "province.required" => 'กรุณากรอกจังหวัด',
-                "history_install.required" => 'กรุณากรอก ปีประวัติการติดตั้งแอร์',
+                "history_install.required" => 'กรุณากรอก ปี ประวัติการติดตั้งแอร์',
                 "month.required" => 'กรุณากรอก เครื่อง / เดือน',
 
             ]

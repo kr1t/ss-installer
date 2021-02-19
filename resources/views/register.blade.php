@@ -19,15 +19,7 @@
 <body>
 
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
 
     <div class="samsung-form">
         @if (!$errors->any())
@@ -154,33 +146,57 @@
                                     <h4 class="heading">ชื่อ (ภาษาไทย)</h4>
                                     <div class="form-group">
                                         <div class="col-12">
-                                            <input class="form-control" id="InputName" name="first_name_th"
-                                                value="{{ old('first_name_th') }}" placeholder="กรอกชื่อของคุณ"
-                                                type="text" />
+                                            <input class="form-control @error('first_name_th') is-invalid @enderror"
+                                                id="InputName" name="first_name_th" value="{{ old('first_name_th') }}"
+                                                placeholder="กรอกชื่อของคุณ" type="text" />
+                                            @error('first_name_th')
+                                            <div class="invalid-feedback text-danger pb-2">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h4 class="heading">นามสกุล (ภาษาไทย)</h4>
                                     <div class="form-group">
                                         <div class="col-12">
-                                            <input class="form-control" id="InputName" name="last_name_th"
-                                                value="{{ old('last_name_th') }}" placeholder="กรอกนามสกุลของคุณ"
-                                                type="text" />
+                                            <input
+                                                class="form-control @error('last_name_th') is-invalid @enderror" " id="
+                                                InputName" name="last_name_th" value="{{ old('last_name_th') }}"
+                                                placeholder="กรอกนามสกุลของคุณ" type="text" />
+
+                                            @error('last_name_th')
+                                            <div class="invalid-feedback text-danger pb-2">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h4 class="heading">ชื่อ (ภาษาอังกฤษ)</h4>
                                     <div class="form-group">
                                         <div class="col-12">
-                                            <input class="form-control" id="InputName2" name="first_name_en"
-                                                value="{{ old('first_name_en') }}" placeholder="กรอกชื่อของคุณ"
-                                                type="text" />
+                                            <input class="form-control @error('first_name_en') is-invalid @enderror"
+                                                id="InputName2" name="first_name_en" value="{{ old('first_name_en') }}"
+                                                placeholder="กรอกชื่อของคุณ" type="text" />
+
+                                            @error('first_name_en')
+                                            <div class="invalid-feedback text-danger pb-2">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h4 class="heading">นามสกุล (ภาษาอังกฤษ)</h4>
                                     <div class="form-group">
                                         <div class="col-12">
-                                            <input class="form-control" id="InputName2" name="last_name_en"
-                                                value="{{ old('last_name_en') }}" placeholder="กรอกนามสกุลของคุณ"
-                                                type="text" />
+                                            <input class="form-control @error('last_name_en') is-invalid @enderror"
+                                                id="InputName2" name="last_name_en" value="{{ old('last_name_en') }}"
+                                                placeholder="กรอกนามสกุลของคุณ" type="text" />
+
+                                            @error('last_name_en')
+                                            <div class="invalid-feedback text-danger pb-2">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h4 class="heading">เบอร์โทรศัพท์</h4>
@@ -188,19 +204,29 @@
                                         <div class="row">
 
                                             <div class="col-12">
-                                                <input class="form-control" id="Inputphone" name="tel"
-                                                    value="{{ old('tel') }}" placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
-                                                    type="tel" />
+                                                <input class="form-control  @error('tel') is-invalid @enderror"
+                                                    id="Inputphone" name="tel" value="{{ old('tel') }}"
+                                                    placeholder="กรอกเบอร์โทรศัพท์ของคุณ" type="tel" />
+                                                @error('tel')
+                                                <div class="invalid-feedback text-danger pb-2">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
-                                    <h4 class="heading">อีเมล์</h4>
+                                    <h4 class="heading">อีเมล</h4>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-12">
-                                                <input class="form-control" id="Inputphone" name="email"
-                                                    value="{{ old('email') }}" placeholder="กรอกอีเมล์ของคุณ"
-                                                    type="email" />
+                                                <input class="form-control  @error('email') is-invalid @enderror"
+                                                    id="Inputphone" name="email" value="{{ old('email') }}"
+                                                    placeholder="กรอกอีเมล์ของคุณ" type="email" />
+                                                @error('email')
+                                                <div class="invalid-feedback text-danger pb-2">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -234,6 +260,15 @@
                                                 </label>
                                             </div>
                                         </div>
+
+
+                                        @error('type_of_work')
+                                        <div class="text-danger pb-2">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+
                                     </div>
 
                                     <div class="mt-3">
@@ -245,7 +280,7 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
-                                                            <input class="form-control" id="Inputphone" name="shop"
+                                                            <input class="form-control " id="Inputphone" name="shop"
                                                                 value="{{ old('shop') }}" placeholder="กรอกร้านค้า"
                                                                 type="text" />
                                                         </div>
@@ -257,13 +292,22 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
-                                                            <select class="form-control">
+
+                                                            <select
+                                                                class="form-control @error('province') is-invalid @enderror"
+                                                                name="province">
                                                                 @foreach($provinceArray as $province)
-                                                                <option value="{{ $province['name_th'] }}">
+                                                                <option value="{{ $province['id'] }}">
                                                                     {{
                                                                     $province['name_th'] }}</option>
                                                                 @endforeach
                                                             </select>
+
+                                                            @error('province')
+                                                            <div class="invalid-feedback text-danger pb-2">
+                                                                {{ $message }}
+                                                            </div>
+                                                            @enderror
 
                                                         </div>
                                                     </div>
@@ -281,9 +325,17 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
-                                                            <input class="form-control" id="Inputphone"
-                                                                name="history_install" placeholder="อายุงาน"
+                                                            <input
+                                                                class="form-control @error('history_install') is-invalid @enderror"
+                                                                id="Inputphone" name="history_install"
+                                                                placeholder="อายุงาน"
                                                                 value="{{ old('history_install') }}" type="text" />
+
+                                                            @error('history_install')
+                                                            <div class="invalid-feedback text-danger pb-2">
+                                                                {{ $message }}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -293,9 +345,16 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="">
-                                                            <input class="form-control" id="Inputphone" name="month"
-                                                                value="{{ old('month') }}"
+                                                            <input
+                                                                class="form-control @error('month') is-invalid @enderror"
+                                                                id="Inputphone" name="month" value="{{ old('month') }}"
                                                                 placeholder="จำนวนเครื่องที่ติดตั้ง" type="text" />
+
+                                                            @error('month')
+                                                            <div class="invalid-feedback text-danger pb-2">
+                                                                {{ $message }}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -303,7 +362,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="text" name="line_uid" value="u12354654654" class="uid">
+                                    <input type="hidden" name="line_uid" value="u12354654654" class="uid">
 
                                     <div class="clearfix mt-40">
                                         <button type="submit" class="btn btn-default">
@@ -322,7 +381,7 @@
     </div>
 </body>
 
-<!-- <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 

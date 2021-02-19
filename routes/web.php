@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::resource('/register', 'RegisterController');
 Route::get('/thankyou', 'RegisterController@thankyou');
 Route::get('/engineer/export', 'RegisterController@export');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
