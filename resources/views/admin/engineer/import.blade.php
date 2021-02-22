@@ -5,7 +5,43 @@
     <div class="row">
         @include('admin.sidebar')
 
-        <div class="col-md-8">
+        <div class="col-md-9">
+
+            @if(session()->has('success'))
+
+            @if(count(session()->get('success')))
+            <div class="alert alert-success mt-2">
+                Import สำเร็จทำการ Push Message สำเร็จ
+
+                <ul>
+                    @foreach(session()->get('success') as $msg)
+                    <li>{{ $msg['first_name_th'] }} {{ $msg['last_name_th'] }} ({{ $msg['installer_id'] }}) | email: {{
+                        $msg['email'] }} phone: {{
+                        $msg['tel'] }}</li>
+                    @endforeach
+                </ul>
+
+            </div>
+            @endif
+            @endif
+
+            @if(session()->has('fail'))
+            @if(count(session()->get('fail')))
+
+            <div class="alert alert-danger mt-2">
+                ทำการ Push Message รายการดังกล่าวไม่สำเร็จ
+
+                <ul>
+                    @foreach(session()->get('fail') as $msg)
+                    <li>{{ $msg['first_name_th'] }} {{ $msg['last_name_th'] }} ({{ $msg['installer_id'] }}) | email: {{
+                        $msg['email'] }} phone: {{
+                        $msg['tel'] }}</li>
+                    @endforeach
+                </ul>
+
+            </div>
+            @endif
+            @endif
             <div class="card">
                 <div class="card-header">Import </div>
                 <div class="card-body">
@@ -25,7 +61,7 @@
 
                         <input type="hidden" name="engineers" value="{{ json_encode($engineers) }}">
 
-                        <table class="table mt-3 table-strip">
+                        <table class="table mt-3 table-strip table-responsive">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -62,7 +98,7 @@
                             </tbody>
                         </table>
 
-                        <div class="mt-2 text-right">
+                        <div class="mt-2 text-center">
 
                             <hr>
                             <button class="btn btn-primary ">Push</button>

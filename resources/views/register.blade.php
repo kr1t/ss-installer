@@ -388,7 +388,7 @@
 <script>
 
     function liffInit(liffId) {
-                $('body').loading();
+        $('body').loading();
 
         liff.init({
             liffId
@@ -399,7 +399,7 @@
                         .getProfile()
                         .then(profile => {
 
-                            if(!liff.isInClient()){
+                            if (!liff.isInClient()) {
                                 window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
                             }
 
@@ -420,7 +420,7 @@
 
     function checkRegister(uid) {
         var settings = {
-            "url": '{{ url('/checkRegister') }}'+ `?line_uid=${uid}` ,
+            "url": '{{ url(' / checkRegister') }}'+ `?line_uid=${uid}`,
 
             "method": "GET",
             "timeout": 0,
@@ -431,13 +431,13 @@
 
         $.ajax(settings).done(function (response) {
 
-            if(response.status){
-                window.location.href = '{{ url('/registered') }}'
+            if (response.status) {
+                window.location.href = '{{ url(' / registered') }}'
             }
 
             $('.samsung-form').show()
 
-                    $('body').loading('stop');
+            $('body').loading('stop');
 
         });
     }

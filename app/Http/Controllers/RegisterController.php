@@ -10,15 +10,13 @@ use App\Imports\EngineerImport;
 use Maatwebsite\Excel\Facades\Excel;
 use PA\ProvinceTh\Factory;
 use Carbon\Carbon;
+use Helpers\LineBot;
 use Illuminate\Support\Arr;
 
 class RegisterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
         $provinces  = Factory::province();
@@ -79,18 +77,43 @@ class RegisterController extends Controller
         }
 
 
+        $success = [];
+        $fail = [];
         foreach ($push as $p) {
-            $importData = $push['import'];
-            $engineer = Engineer::where('id', $push['id'])->first();
+            $importData = $p['import'];
+            $engineer = Engineer::where('id', $p['id'])->first();
 
             $engineer->update([
                 'installer_id' => $importData['installer_id'],
                 'point' => $importData['point']
             ]);
+
+            $bot = new LineBot(env('LINE_TOKEN', ''));
+
+            try {
+                $pushAPI = $bot->setUser($engineer->line_uid)->addText("ยินดีต้อนรับ คุณ {$engineer->first_name_th} {$engineer->last_name_th} สู่ครอบครัวชมรมช่างแอร์ซัมซุง 🔧
+                คุณสามารถเข้าใช้งานแอพพลิเคชั่น SWAT ได้แล้ว 📱
+                ชื่อผู้ใช้ : {$engineer->installer_id}
+                โดยเมื่อเข้าสู่ระบบครั้งแรก ให้พี่ๆ ช่างแอร์ตั้งรหัสผ่านใหม่ โดยทำตามขั้นตอนต่อไปนี้
+                1) กดลืมรหัสผ่าน
+                2) กรอกอีเมลที่ใช้สมัคร
+                3) ตรวจสอบกล่องขาเข้าอีเมล คลิกที่ลิ้งก์เพื่อตั้งรหัสผ่านใหม่
+                4) กรอกชื่อผู้ใช้ที่ได้รับด้านบนและรหัสผ่านเพื่อเข้าสู่ระบบ
+                เพียงเท่านี้ก็เข้าร่วมกิจกรรมเพื่อรับสิทธิพิเศษดีๆ กับชมรมช่างแอร์ซัมซุงได้แล้ว")->push();
+
+                if (isset($pushAPI['message'])) {
+                    array_push($fail, $engineer);
+                } else {
+                    $engineer->increment('notification_count');
+                    array_push($success, $engineer);
+                }
+            } catch (\Exception $e) {
+                array_push($fail, $engineer);
+            }
         }
 
 
-        // return $request->all();
+        return redirect(url('admin/installer/import'))->with('success', $success)->with('fail', $fail);
     }
 
 
