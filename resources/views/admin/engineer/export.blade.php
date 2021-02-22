@@ -17,7 +17,7 @@
 
                     <input type="text" class="daterange form-control" name="daterange" placeholder="กรุณาเลือกวันที่">
 
-                    <div class="text-right mt-3">
+                    <div class=" mt-3">
                         <button class="btn btn-primary download-export">Download</button>
 
                     </div>
@@ -47,7 +47,7 @@
         $('.download-export').click(function (e) {
             e.preventDefault();
 
-            let url = '{{url(' / installer /export')}}';
+            let url = '{{url('/installer/export')}}';
             let dateVal = $('.daterange').val()
             window.location.href = `${url}?dates=${dateVal}`;
         })

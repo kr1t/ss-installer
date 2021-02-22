@@ -30,8 +30,8 @@ Route::get('/home', function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return redirect(url('/admin/installer/export'))->middleware('auth');
-    });
+        return redirect(url('/admin/installer/export'));
+    })->middleware('auth');
 
     Route::prefix('installer')->group(function () {
         Route::get('/export', 'EngineerController@export')->middleware('auth');
