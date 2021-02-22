@@ -7,7 +7,7 @@ use PA\ProvinceTh\Factory;
 
 class Engineer extends Model
 {
-    protected $fillable = ['first_name_th', 'last_name_th', 'first_name_en', 'last_name_en', 'email', 'tel', 'type_of_work', 'shop', 'province', 'history_install', 'month', 'line_uid', 'installer_id', 'point'];
+    protected $fillable = ['first_name_th', 'last_name_th', 'first_name_en', 'last_name_en', 'email', 'tel', 'type_of_work', 'shop', 'province', 'history_install', 'month', 'line_uid', 'installer_id', 'point', 'notification_count'];
 
     public function getProvinceAttribute($q)
     {

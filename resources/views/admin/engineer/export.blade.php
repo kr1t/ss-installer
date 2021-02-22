@@ -1,21 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         @include('admin.sidebar')
 
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Export Installer Lists</div>
                 <div class="card-body">
 
 
-                    <h1>Lorem</h1>
+                    <h1>Export รายชื่อช่างที่ลงทะเบียนเข้ามา </h1>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates consequuntur, repudiandae
-                        veniam dicta delectus voluptatem voluptatibus laborum vero illo error nihil molestiae ea,
-                        architecto itaque illum! Ipsam pariatur minus blanditiis!</p>
+                    <p>เลือกวันที่ต้องการดูข้อมูล</p>
 
                     <input type="text" class="daterange form-control" name="daterange" placeholder="กรุณาเลือกวันที่">
 
@@ -49,10 +47,10 @@
         $('.download-export').click(function (e) {
             e.preventDefault();
 
-            let url = '{{url('/installer/export')}}';
+            let url = '{{url(' / installer /export')}}';
             let dateVal = $('.daterange').val()
-            window.location.href =   `${url}?dates=${dateVal}`;
-    })
+            window.location.href = `${url}?dates=${dateVal}`;
+        })
     });
 </script>
 @endsection

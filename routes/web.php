@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('installer')->group(function () {
         Route::get('/export', 'EngineerController@export');
         Route::get('/import', 'EngineerController@import');
+        Route::post('/import', 'RegisterController@importSubmit');
     });
 });
 

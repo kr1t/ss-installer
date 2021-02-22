@@ -13,6 +13,7 @@ class EngineerController extends Controller
     }
     public function import()
     {
-        return view('admin.engineer.import');
+        $engineers = [];
+        return view('admin.engineer.import', compact('engineers'));
     }
 }

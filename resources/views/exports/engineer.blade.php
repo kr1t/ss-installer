@@ -13,7 +13,6 @@
             <th>MT</th>
             <th>source</th>
             <th>Created At</th>
-
         </tr>
     </thead>
 

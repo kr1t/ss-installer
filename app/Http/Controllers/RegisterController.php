@@ -10,6 +10,7 @@ use App\Imports\EngineerImport;
 use Maatwebsite\Excel\Facades\Excel;
 use PA\ProvinceTh\Factory;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 
 class RegisterController extends Controller
 {
@@ -43,10 +44,55 @@ class RegisterController extends Controller
     public function import()
     {
 
-        Excel::import(new EngineerImport, request()->file('file'));
+        $userImports = Excel::toArray(new EngineerImport, request()->file('file'));
 
-        return back();
+        $emails = Arr::pluck($userImports[0], 'email');
+        $engineers = Engineer::whereIn('email', $emails)->get();
+
+
+        foreach ($engineers  as $engineer) {
+            $engineer->import = Arr::last($userImports[0], function ($value, $key) use ($engineer) {
+                return $engineer->email == $value['email'];
+            });
+        }
+
+        return view('admin.engineer.import', compact('engineers'));
     }
+
+    public function importSubmit(Request $request)
+    {
+
+        $engineers = json_decode($request->engineers, true);
+        $import = $request->import;
+
+
+        $push = [];
+
+
+
+
+        foreach ($import as $key => $i) {
+            $find = Arr::last($engineers, function ($value) use ($key) {
+                return $key == $value['id'];
+            });
+            array_push($push, $find);
+        }
+
+
+        foreach ($push as $p) {
+            $importData = $push['import'];
+            $engineer = Engineer::where('id', $push['id'])->first();
+
+            $engineer->update([
+                'installer_id' => $importData['installer_id'],
+                'point' => $importData['point']
+            ]);
+        }
+
+
+        // return $request->all();
+    }
+
 
 
     public function checkRegister(Request $request)
@@ -68,8 +114,6 @@ class RegisterController extends Controller
     {
         $validated = $request->validate(
             [
-                'first_name_th' => "required|regex:(^[ก-๏\s]+$)|max:255",
-                'last_name_th' => "required|regex:(^[ก-๏\s]+$)|max:255",
                 'first_name_en' => "required|alpha|max:255",
                 'last_name_en' => "required|alpha|max:255",
                 'email' => "required|email|unique:users",
