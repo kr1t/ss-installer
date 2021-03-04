@@ -381,12 +381,20 @@
     </div>
 </body>
 
-<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <link rel="stylesheet" href="https://carlosbonetti.github.io/jquery-loading/styles.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script src="https://unpkg.com/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js"></script>
-<script>
 
+
+@php
+
+$config['checkRegister']= {{ url('/checkRegister') }};
+$config['registered']= {{ url('/registered') }};
+
+@endphp
+<script>
+    let lConfig = @json($config);
     function liffInit(liffId) {
         $('body').loading();
 
@@ -420,7 +428,7 @@
 
     function checkRegister(uid) {
         var settings = {
-            "url": '{{ url(' / checkRegister') }}'+ `?line_uid=${uid}`,
+            "url": '' + `?line_uid=${uid}`,
 
             "method": "GET",
             "timeout": 0,
@@ -432,7 +440,7 @@
         $.ajax(settings).done(function (response) {
 
             if (response.status) {
-                window.location.href = '{{ url(' / registered') }}'
+                window.location.href = ''
             }
 
             $('.samsung-form').show()
