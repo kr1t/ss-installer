@@ -45,3 +45,8 @@ Route::get('/checkRegister', 'RegisterController@checkRegister');
 Route::get('/migrate', function () {
     \Artisan::call('migrate');
 })->middleware('auth');
+
+Route::get('/redeem', 'RedeemController@index')->name('redeem');
+Route::get('/redeem/{engineer}{item}-{name}', 'RedeemController@create')->name('create.redeem');
+Route::post('redeem', 'RedeemController@store')->name('store.redeem');
+

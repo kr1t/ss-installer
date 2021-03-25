@@ -7,7 +7,24 @@ use PA\ProvinceTh\Factory;
 
 class Engineer extends Model
 {
-    protected $fillable = ['first_name_th', 'last_name_th', 'first_name_en', 'last_name_en', 'email', 'tel', 'type_of_work', 'shop', 'province', 'history_install', 'month', 'line_uid', 'installer_id', 'point', 'notification_count'];
+    protected $table = 'engineers';
+    protected $fillable = [
+        'first_name_th',
+        'last_name_th',
+        'first_name_en',
+        'last_name_en',
+        'email',
+        'tel',
+        'type_of_work',
+        'shop',
+        'province',
+        'history_install',
+        'month',
+        'line_uid',
+        'installer_id',
+        'point',
+        'notification_count',
+    ];
 
     public function getProvinceAttribute($q)
     {
@@ -32,5 +49,27 @@ class Engineer extends Model
         }
         return
             $typeName;
+    }
+
+    protected $appends = ['total', 'lastest_redeem_address'];
+
+    public function getTotalAttribute()
+    {
+        $points = $this->points();
+        return $points->sum('point');
+    }
+
+    public function getLastestRedeemAddressAttribute() {
+        $lastest = EngineerRedeem::select('address')
+            ->where('engineer_id', $this->attributes['id'])
+            ->orderBy('created_at', 'desc')
+            ->first();
+        $address = $lastest->address;
+        return $address;
+    }
+
+    public function points()
+    {
+        return $this->hasMany('App\EngineerPoint');
     }
 }

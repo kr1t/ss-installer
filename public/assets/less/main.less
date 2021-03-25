@@ -1,237 +1,566 @@
 .samsung-form {
-  font-family: "Kittithada Roman 55 P";
-  line-height: 1.5;
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 0;
-  background: #ffffff;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-smoothing: antialiased;
-  font-weight: 500;
+    font-family: "Kittithada Roman 55 P";
+    line-height: 1.5;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0;
+    background: #ffffff;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    font-weight: 500;
 
-  * {
-    box-sizing: border-box;
-  }
-  .mt-50 {
-    margin-top: 50px;
-  }
-  .mt-40 {
-    margin-top: 40px;
-  }
-
-  .term {
-    // display: none;
-    padding-bottom: 30px;
-    .logo {
-      max-width: 161px;
+    * {
+        box-sizing: border-box;
     }
-    .head {
-      font-family: "Kittithada Bold 75 F";
-      h4 {
-        font-size: 18px;
-      }
+    .mt-50 {
+        margin-top: 50px;
     }
-    .content {
-      font-family: "Kittithada Roman 55 P";
-      font-size: 16px;
-      p {
-        margin-bottom: 0rem;
-      }
+    .mt-40 {
+        margin-top: 40px;
     }
-    .termm {
-      position: relative;
-      .form-checks {
-        // margin-left: 28%;
-        padding-left: 0em;
 
-        margin-top: 5%;
-        font-family: "Kittithada Medium 65 P";
-        @media only screen and (min-width: 768px) {
-          text-align: left;
+    .term {
+        // display: none;
+        padding-bottom: 30px;
+        .logo {
+            max-width: 161px;
         }
-        @media only screen and (max-width: 425px) {
-          text-align: center;
+        .head {
+            font-family: "Kittithada Bold 75 F";
+            h4 {
+                font-size: 18px;
+            }
         }
-      }
-
-      .container {
-        display: block;
-        position: relative;
-        padding-left: 35px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 16px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      /* Hide the browser's default checkbox */
-      .container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-      }
-
-      /* Create a custom checkbox */
-      .checkmark {
-        position: absolute;
-        top: 2px;
-
-        height: 20px;
-        width: 20px;
-        background-color: #eee;
-        border-radius: 15px;
-        @media only screen and (min-width: 768px) {
-          left: 0%;
+        .content {
+            font-family: "Kittithada Roman 55 P";
+            font-size: 16px;
+            p {
+                margin-bottom: 0rem;
+            }
         }
-        @media only screen and (max-width: 425px) {
-          left: 22%;
+        .termm {
+            position: relative;
+            .form-checks {
+                // margin-left: 28%;
+                padding-left: 0em;
+
+                margin-top: 5%;
+                font-family: "Kittithada Medium 65 P";
+                @media only screen and (min-width: 768px) {
+                    text-align: left;
+                }
+                @media only screen and (max-width: 425px) {
+                    text-align: center;
+                }
+            }
+
+            .container {
+                display: block;
+                position: relative;
+                padding-left: 35px;
+                margin-bottom: 12px;
+                cursor: pointer;
+                font-size: 16px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            /* Hide the browser's default checkbox */
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+            /* Create a custom checkbox */
+            .checkmark {
+                position: absolute;
+                top: 2px;
+
+                height: 20px;
+                width: 20px;
+                background-color: #eee;
+                border-radius: 15px;
+                @media only screen and (min-width: 768px) {
+                    left: 0%;
+                }
+                @media only screen and (max-width: 425px) {
+                    left: 22%;
+                }
+            }
+
+            /* On mouse-over, add a grey background color */
+            .container:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+
+            /* When the checkbox is checked, add a blue background */
+            .container input:checked ~ .checkmark {
+                background-color: #42698a;
+            }
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+
+            /* Show the checkmark when checked */
+            .container input:checked ~ .checkmark:after {
+                display: block;
+            }
+
+            /* Style the checkmark/indicator */
+            .container .checkmark:after {
+                left: 9px;
+                top: 5px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
         }
-      }
-
-      /* On mouse-over, add a grey background color */
-      .container:hover input ~ .checkmark {
-        background-color: #ccc;
-      }
-
-      /* When the checkbox is checked, add a blue background */
-      .container input:checked ~ .checkmark {
-        background-color: #42698a;
-      }
-
-      /* Create the checkmark/indicator (hidden when not checked) */
-      .checkmark:after {
-        content: "";
-        position: absolute;
+        .button-ss {
+            input {
+                font-family: "Kittithada Bold 75 F";
+                font-size: 20px;
+                width: 100%;
+                height: 48px;
+                background-color: #42698a;
+            }
+        }
+    }
+    .formm {
+        padding-bottom: 30px;
         display: none;
-      }
 
-      /* Show the checkmark when checked */
-      .container input:checked ~ .checkmark:after {
-        display: block;
-      }
-
-      /* Style the checkmark/indicator */
-      .container .checkmark:after {
-        left: 9px;
-        top: 5px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
-    }
-    .button-ss {
-      input {
-        font-family: "Kittithada Bold 75 F";
-        font-size: 20px;
-        width: 100%;
-        height: 48px;
-        background-color: #42698a;
-      }
-    }
-  }
-  .formm {
-    padding-bottom: 30px;
-    display: none;
-
-    .logo {
-      max-width: 161px;
-    }
-    .form-content {
-      .heading {
-        font-family: "Kittithada Medium 65 P";
-        font-size: 20px;
-        span {
-          color: #b1b2b4;
+        .logo {
+            max-width: 161px;
         }
-      }
-      .headings {
-        font-family: "Kittithada Medium 65 P";
-        font-size: 16px;
-      }
-      .form-check-label {
-        font-family: "Kittithada Medium 65 P";
-      }
-      .form-check-input:checked {
+        .form-content {
+            .heading {
+                font-family: "Kittithada Medium 65 P";
+                font-size: 20px;
+                span {
+                    color: #b1b2b4;
+                }
+            }
+            .headings {
+                font-family: "Kittithada Medium 65 P";
+                font-size: 16px;
+            }
+            .form-check-label {
+                font-family: "Kittithada Medium 65 P";
+            }
+            .form-check-input:checked {
+                background-color: #42698a;
+                border-color: #42698a;
+            }
+            .form-control {
+                padding: 0rem 0rem;
+                height: 32px;
+                font-size: 14px;
+                color: #2b2a2a;
+                border: none;
+                border-bottom: 2px solid #ccc;
+                border-radius: 0;
+                box-shadow: none;
+                margin-bottom: 15px;
+            }
+            .form-control:focus {
+                border-color: #42698a;
+                box-shadow: none;
+            }
+            .control-label {
+                font-size: 17px;
+                color: #ccc;
+                position: absolute;
+                top: 5px;
+                left: 27px;
+                text-align: center;
+            }
+            extarea.form-control {
+                resize: vertical;
+                height: 130px;
+            }
+            .btn {
+                font-family: "Kittithada Bold 75 F";
+                font-size: 20px;
+                width: 100%;
+                height: 48px;
+                background-color: #42698a;
+                border-radius: 0;
+                color: #fff;
+                transition: all 0.5s ease 0s;
+            }
+        }
+    }
+    .success {
         background-color: #42698a;
-        border-color: #42698a;
-      }
-      .form-control {
-        padding: 0rem 0rem;
-        height: 32px;
-        font-size: 14px;
-        color: #2b2a2a;
-        border: none;
-        border-bottom: 2px solid #ccc;
-        border-radius: 0;
-        box-shadow: none;
-        margin-bottom: 15px;
-      }
-      .form-control:focus {
-        border-color: #42698a;
-        box-shadow: none;
-      }
-      .control-label {
-        font-size: 17px;
-        color: #ccc;
-        position: absolute;
-        top: 5px;
-        left: 27px;
-        text-align: center;
-      }
-      extarea.form-control {
-        resize: vertical;
-        height: 130px;
-      }
-      .btn {
-        font-family: "Kittithada Bold 75 F";
-        font-size: 20px;
-        width: 100%;
-        height: 48px;
-        background-color: #42698a;
-        border-radius: 0;
+        padding: 0 3em;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
         color: #fff;
-        transition: all 0.5s ease 0s;
-      }
-    }
-  }
-  .success {
-    background-color: #42698a;
-    padding: 0 3em;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    color: #fff;
-    position: relative;
-    h1 {
-      text-align: center;
-    }
-    P{
-      font-size: 18px;
-    }
-    .btn-light{
-      font-size: 22px;
-    
-    }
-    .mt-50{
         position: relative;
-      bottom: -5%;
+        h1 {
+            text-align: center;
+        }
+        P {
+            font-size: 18px;
+        }
+        .btn-light {
+            font-size: 22px;
+        }
+        .mt-50 {
+            position: relative;
+            bottom: -5%;
+        }
     }
-  }
+}
+.samsung-form-redeem {
+    font-family: "Kittithada Roman 55 P";
+    line-height: 1.5;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0;
+    background: #f1f4fb;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    font-weight: 500;
+
+    padding-top: 40px;
+    min-height: 100vh;
+    * {
+        box-sizing: border-box;
+    }
+    .mt-50 {
+        margin-top: 50px;
+    }
+    .mt-40 {
+        margin-top: 40px;
+    }
+    .redeem-head {
+        padding: 4vw;
+        border-radius: 15px;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .item {
+            flex: 0 0 30%;
+            display: flex;
+            align-items: flex-end;
+            &:nth-child(even) {
+                justify-content: flex-end;
+            }
+
+            &:nth-child(odd) {
+                flex: 0 0 70%;
+                align-items: flex-end;
+            }
+        }
+
+        .col-4 {
+            text-align: right;
+        }
+        p {
+            font-family: "Kittithada Bold 75 F";
+            margin: 0;
+            font-weight: 600;
+            font-size: 22px;
+        }
+        strong {
+            font-family: "Kittithada Bold 75 F";
+            font-size: 18px;
+        }
+        .mail {
+            color: #828282;
+        }
+        .point {
+            font-size: 26px;
+            color: #42698a;
+            small {
+                font-size: 14px;
+                color: #000;
+            }
+        }
+        .tag {
+            span {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+    #redeem-detail {
+        // display: none;
+        margin-top: 30px;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            font-family: "Kittithada Bold 75 F";
+            font-size: 24px;
+        }
+        .item {
+            padding-bottom: 4vw;
+            .button-ss {
+                font-family: "Kittithada Bold 75 F";
+                font-size: 20px;
+                width: 100%;
+                height: 48px;
+                background-color: #42698a;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 15px;
+                text-decoration: none;
+            }
+        }
+        .img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 122px;
+            text-align: center;
+            background: #42698a;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        .text {
+            background: #fff;
+            padding: 2vw;
+            h3 {
+                font-size: 20px;
+            }
+        }
+    }
+    .detail-a {
+        text-align: center;
+        h2 {
+            font-family: "Kittithada Roman 55 P" !important;
+        }
+        h1 {
+            font-family: "Kittithada Bold 75 F";
+            color: #42698a;
+        }
+        .ssw {
+            display: flex;
+            justify-content: center;
+        }
+        .imgs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            text-align: center;
+            background: #42698a;
+            width: 50%;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        .form-horizontal {
+            padding-top: 50px;
+            .form-content {
+                .heading {
+                    font-family: "Kittithada Medium 65 P";
+                    font-size: 20px;
+                    text-align: left;
+                    span {
+                        color: #b1b2b4;
+                    }
+                }
+                .headings {
+                    font-family: "Kittithada Medium 65 P";
+                    font-size: 16px;
+                }
+                .form-check-label {
+                    font-family: "Kittithada Medium 65 P";
+                }
+                .form-check-input:checked {
+                    background-color: #42698a;
+                    border-color: #42698a;
+                }
+                .form-control {
+                    padding: 0rem 0rem;
+                    height: 32px;
+                    font-size: 14px;
+                    color: #2b2a2a;
+                    border: none;
+                    border-bottom: 2px solid #ccc;
+                    background: #f1f4fb;
+                    border-radius: 0;
+                    box-shadow: none;
+                    margin-bottom: 15px;
+                }
+                .form-control:focus {
+                    border-color: #42698a;
+                    box-shadow: none;
+                }
+                .control-label {
+                    font-size: 17px;
+                    color: #ccc;
+                    position: absolute;
+                    top: 5px;
+                    left: 27px;
+                    text-align: center;
+                }
+                extarea.form-control {
+                    resize: vertical;
+                    height: 130px;
+                }
+                .btn {
+                    font-family: "Kittithada Bold 75 F";
+                    font-size: 20px;
+                    width: 100%;
+                    height: 48px;
+                    background-color: #42698a;
+                    border-radius: 0;
+                    color: #fff;
+                    transition: all 0.5s ease 0s;
+                }
+            }
+        }
+    }
+    #point-detail {
+        display: none;
+        margin-top: 30px;
+        h2 {
+            font-family: "Kittithada Bold 75 F";
+            font-size: 24px;
+        }
+        .wraperp {
+            background: #fff;
+            border-radius: 15px;
+            padding: 4vw;
+            table {
+                font-family: "Kittithada Medium 65 P";
+                th,
+                td {
+                    &:nth-child(3) {
+                        text-align: right;
+                    }
+                    &:nth-child(4) {
+                        text-align: right;
+                    }
+                }
+                thead {
+                    border-bottom: 1px #c0c0c0 solid;
+                    font-size: 18px;
+                }
+                .plus {
+                    color: #27ae60;
+                }
+                .del {
+                    color: #eb5757;
+                }
+            }
+        }
+        .button-ss {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            margin: 0 auto;
+            font-family: "Kittithada Bold 75 F";
+            font-size: 20px;
+            width: 90%;
+            transform: translate(-50%, -50%);
+            height: 48px;
+            background-color: #42698a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+    }
+    #pp {
+        background: rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        display: none;
+        height: 100%;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+    }
+    #pp .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    #pp > div {
+        background-color: #fff;
+        box-shadow: 10px 10px 60px #555;
+        display: inline-block;
+        height: auto;
+        max-width: 551px;
+        min-height: 100px;
+        vertical-align: middle;
+        width: 80%;
+        position: relative;
+        // border-radius: 8px;
+        padding: 30px 5%;
+    }
+    #pp {
+        .wrapper {
+            p {
+                font-family: "Kittithada Bold 75 F";
+                font-size: 28px;
+                padding-bottom: 50px;
+            }
+        }
+    }
+    .popupCloseButton {
+        cursor: pointer;
+        background: #42698a;
+        display: inline-block;
+        font-family: "Kittithada Bold 75 F";
+        font-weight: bold;
+
+        top: 0px;
+        right: 0px;
+        // font-size: 25px;
+        line-height: 30px;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        color: #fff;
+        font-size: 20px;
+        // width: 30px;
+        // height: 30px;
+        text-align: center;
+        width: 90%;
+    }
+    .popupCloseButton:hover {
+        background-color: #ccc;
+    }
 }
 
 /*****************************/

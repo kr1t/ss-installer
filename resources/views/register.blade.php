@@ -21,7 +21,7 @@
 
 
 
-    <div class="samsung-form" style="display: none;">
+    <div class="samsung-form" style="display: block;">
         @if (!$errors->any())
 
         <div class="container term" id="term">
@@ -389,10 +389,11 @@
 
 @php
 
-$config['checkRegister']= {{ url('/checkRegister') }};
-$config['registered']= {{ url('/registered') }};
+$config['checkRegister']= url('/checkRegister');
+$config['registered']= url('/registered');
 
 @endphp
+
 <script>
     let lConfig = @json($config);
     function liffInit(liffId) {
@@ -450,9 +451,9 @@ $config['registered']= {{ url('/registered') }};
         });
     }
 
-    $(document).ready(function () {
-        liffInit('1655673420-lYR3d0Bj')
-    })
+    // $(document).ready(function () {
+    //     liffInit('1655673420-lYR3d0Bj')
+    // })
 </script>
 
 <script>
