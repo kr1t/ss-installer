@@ -21,7 +21,7 @@
 {{--            <img src="{{asset('images/check.png')}}" alt="">--}}
             <br>
             <h1>
-                ระดับไม่ถูกต้อง
+                @include('frontend.include.message')
             </h1>
             <p class="text-center">
                 โปรดรอติดตามอัพเดตข่าวสารและข้อมูลผ่านทาง  <br> Line : ชมรมช่างแอร์ซัมซุง

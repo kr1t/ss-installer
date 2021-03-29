@@ -15,12 +15,19 @@ class ExamController extends Controller
         $line_uid = 'u12354654654'; //get line user id
         $engineer = (Engineer::where('line_uid', $line_uid)->first(['id']));
         $engineer_id = $engineer->id;
+
         $engineer_level = 1; // $engineer->level ; 1 silver, 2 gold
 
         if($type == 'silver'){
             $type = 1;
         } else if($type == 'gold') {
             $type = 2;
+        } else {
+            return view('frontend.error')->with('message', 'ไม่พบหน้าที่ค้นหา');
+        }
+
+        if ($engineer_level != $type){
+            return view('frontend.error')->with('message', 'ระดับไม่ถูกต้อง');
         }
 
         $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
@@ -39,8 +46,6 @@ class ExamController extends Controller
             }
 
             return view('frontend.exam', compact('exams', 'engineer_id', 'type'));
-        } else if ($engineer_level != $type){
-            return view('frontend.error-exam');
         }
 
         return view('frontend.success-exam-ag');
