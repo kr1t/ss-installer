@@ -8,7 +8,7 @@
     />
     @include('frontend.include.header-js')
 
-    <title>SAMSUNG - FORM</title>
+    <title>SAMSUNG INSTALLER @yield('title')</title>
 </head>
 <body>
 <div>

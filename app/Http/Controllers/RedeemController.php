@@ -19,7 +19,7 @@ class RedeemController extends Controller
      */
     public function index()
     {
-        $line_uid = 'u12354654654'; //line user id
+        $line_uid = 'u12354654654'; //get line user id
 
         $engineer = Engineer::where('line_uid', $line_uid)->with([
             'points' => function ($q) {

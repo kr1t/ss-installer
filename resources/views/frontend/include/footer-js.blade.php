@@ -14,3 +14,4 @@
 
 
 </script>
+<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
