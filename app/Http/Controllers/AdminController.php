@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Maatwebsite\Excel\Facades\Excel;
 
-class EngineerController extends Controller
+class AdminController extends Controller
 {
     public function export()
     {
@@ -24,7 +24,7 @@ class EngineerController extends Controller
 
     public function importPoint()
     {
-        if(!empty(request()->file('file'))){
+        if (!empty(request()->file('file'))) {
             $pointImports = Excel::toArray(new PointsImport, request()->file('file'));
             $points = $pointImports[0];
 
@@ -42,9 +42,9 @@ class EngineerController extends Controller
         $success = [];
         $fail = [];
 
-        foreach ($points as $point){
+        foreach ($points as $point) {
             $engineer = Engineer::where('installer_id', $point['engineer_code'])->first(['id']);
-            if ($engineer != null){
+            if ($engineer != null) {
                 $input['engineer_id'] = $engineer->id;
                 $input['point'] = $point['point'];
                 $input['created_at'] = date('Y-m-d H:m:s', strtotime($point['job_source_create']));
@@ -57,7 +57,5 @@ class EngineerController extends Controller
         }
 
         return redirect('/admin/point/import')->with('success', $success)->with('fail', $fail);
-
     }
-
 }
