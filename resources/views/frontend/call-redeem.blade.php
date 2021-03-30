@@ -37,9 +37,9 @@ $config['checkRedeemStatus']= url('/redeem/check');
                         .getProfile()
                         .then(profile => {
 
-                            // if (!liff.isInClient()) {
-                            //     window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
-                            // }
+                            if (!liff.isInClient()) {
+                                window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
+                            }
 
                             window.location.href = `${lConfig['redeem']}?line_uid=${profile.userId}`
 

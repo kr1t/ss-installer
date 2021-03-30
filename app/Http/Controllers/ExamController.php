@@ -13,6 +13,7 @@ class ExamController extends Controller
     public function exam(Request $request, string $type)
     {
         $line_uid = $request->line_uid; //get line user id
+
         $engineer = (Engineer::where('line_uid', $line_uid)->first(['id']));
         $engineer_id = $engineer->id;
 
