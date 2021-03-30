@@ -17,6 +17,11 @@
                     Import Point Lists
                 </a>
 
+                </a>
+                <a class="nav-link" href="{{ url('/admin/') }}">
+                    Muticast By Tel No.
+                </a>
+
             </nav>
 
         </div>

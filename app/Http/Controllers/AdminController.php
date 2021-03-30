@@ -22,6 +22,11 @@ class AdminController extends Controller
         return view('admin.engineer.import', compact('engineers'));
     }
 
+    public function multicastByTel()
+    {
+        return view('admin.multicast.tel');
+    }
+
     public function importPoint()
     {
         if (!empty(request()->file('file'))) {

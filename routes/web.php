@@ -59,6 +59,8 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('installer')->group(function () {
         Route::get('/export', 'AdminController@export')->middleware('auth');
+        Route::get('/multicast/tel', 'AdminController@multicastByTel')->middleware('auth');
+
         Route::get('/import', 'AdminController@import')->middleware('auth');
         Route::post('/import', 'RegisterController@importSubmit')->middleware('auth');
     });
