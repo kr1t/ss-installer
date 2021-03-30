@@ -18,16 +18,19 @@ class ExamController extends Controller
 
         $engineer_level = 1; // $engineer->level ; 1 silver, 2 gold
 
-        if($type == 'silver'){
+        $errorMsg = '';
+        if($type == 'silver')
             $type = 1;
-        } else if($type == 'gold') {
+        else if($type == 'gold')
             $type = 2;
-        } else {
-            return view('frontend.error')->with('message', 'ไม่พบหน้าที่ค้นหา');
-        }
+        else
+            $errorMsg = 'ไม่พบหน้าที่ค้นหา';
 
-        if ($engineer_level != $type){
-            return view('frontend.error')->with('message', 'ระดับไม่ถูกต้อง');
+        if ($engineer_level != $type)
+            $errorMsg = 'ระดับไม่ถูกต้อง';
+
+        if (!empty($errorMsg)) {
+            return view('frontend.error')->with('message', $errorMsg);
         }
 
         $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)

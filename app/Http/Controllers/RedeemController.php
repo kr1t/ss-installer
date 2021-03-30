@@ -27,10 +27,12 @@ class RedeemController extends Controller
             },
         ])->get()->first();
 
-        if (empty($engineer)){
+        if (empty($engineer))
             return redirect('/register');
-        }
-//        dd($engineer->total, $engineer->points, $engineer->points[1]->redeem_item->name);
+
+        if (empty($engineer->installer_id))
+            return view('frontend.error')->with('message', 'โปรดรอยืนยันการลงทะเบียน');
+
 
         $redeemItems = RedeemItem::all();
 
