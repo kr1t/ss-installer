@@ -13,7 +13,7 @@
         <span>{{ $engineer->total }} <small>คะแนน</small> </span>
     </div>
     <div class="id item" >
-        <p>AR00000000010</p>
+        <p>{{ $engineer->installer_id }}</p>
     </div>
     <div class="tag item text-right">
         <div onclick="showPoint()">
