@@ -32,6 +32,11 @@ Route::get('/point/import', function () {
     return redirect('admin/point/import');
 })->middleware('auth');
 
+Route::post('/permission/silver-import', 'ExamController@importSilver')->name('importSilver')->middleware('auth');
+Route::get('/permission/silver-import', function () {return redirect('admin/exam/silver-import');})->middleware('auth');
+Route::post('/permission/gold-import', 'ExamController@importGold')->name('importGold')->middleware('auth');
+Route::get('/permission/gold-import', function () {return redirect('admin/exam/gold-import');})->middleware('auth');
+
 Route::get('/home', function () {
     return redirect('admin/installer/import');
 });
@@ -64,12 +69,27 @@ Route::prefix('admin')->group(function () {
         Route::get('/import', 'AdminController@import')->middleware('auth');
         Route::post('/import', 'RegisterController@importSubmit')->middleware('auth');
     });
+
     Route::prefix('point')->group(function () {
         Route::get('/import', function () {
             $points = [];
             return view('admin.point.import', compact('points'));
         })->middleware('auth');
         Route::post('/import', 'AdminController@importPointSubmit')->middleware('auth');
+    });
+
+    Route::prefix('permission')->group(function () {
+        Route::get('/silver-import', function (){
+            $permissions = [];
+            return view('admin.permission.silver-import', compact('permissions'));
+        })->middleware('auth');
+        Route::post('/silver-import', 'ExamController@importSilverSubmit')->middleware('auth');
+
+        Route::get('/gold-import', function (){
+            $permissions = [];
+            return view('admin.permission.gold-import', compact('permissions'));
+        })->middleware('auth');
+        Route::post('/gold-import', 'ExamController@importGoldSubmit')->middleware('auth');
     });
 });
 
