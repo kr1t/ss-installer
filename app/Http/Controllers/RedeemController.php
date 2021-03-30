@@ -27,6 +27,9 @@ class RedeemController extends Controller
             },
         ])->get()->first();
 
+        if (empty($engineer)){
+            return redirect('/register');
+        }
 //        dd($engineer->total, $engineer->points, $engineer->points[1]->redeem_item->name);
 
         $redeemItems = RedeemItem::all();
