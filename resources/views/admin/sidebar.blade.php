@@ -13,6 +13,9 @@
                 <a class="nav-link" href="{{ url('/admin/installer/import') }}">
                     Import Installer Lists (SWAT id)
                 </a>
+                <a class="nav-link" href="{{ url('/admin/point/import') }}">
+                    Import Point Lists
+                </a>
 
             </nav>
 

@@ -59,15 +59,10 @@ class RegisterController extends Controller
 
     public function importSubmit(Request $request)
     {
-
         $engineers = json_decode($request->engineers, true);
         $import = $request->import;
 
-
         $push = [];
-
-
-
 
         foreach ($import as $key => $i) {
             $find = Arr::last($engineers, function ($value) use ($key) {
