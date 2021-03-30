@@ -14,8 +14,7 @@
 
 </html>
 @php
-$config['redeem']= url('/redeem');
-$config['checkRedeemStatus']= url('/redeem/check');
+$config['silverExam']= url('/silver-exam');
 
 @endphp
 
@@ -37,11 +36,11 @@ $config['checkRedeemStatus']= url('/redeem/check');
                         .getProfile()
                         .then(profile => {
 
-                            // if (!liff.isInClient()) {
-                            //     window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
-                            // }
+                            if (!liff.isInClient()) {
+                                window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
+                            }
 
-                            window.location.href = `${lConfig['redeem']}?line_uid=${profile.userId}`
+                            window.location.href = `${lConfig['silverExam']}?line_uid=${profile.userId}`
 
                         })
                         .catch(err => console.error(err));
@@ -54,33 +53,6 @@ $config['checkRedeemStatus']= url('/redeem/check');
             });
     }
 
-
-    function checkRegister(uid) {
-        var settings = {
-            "url": lConfig['checkRedeemStatus'] + `?line_uid=${uid}`,
-
-            "method": "GET",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json",
-            },
-        };
-
-        $.ajax(settings).done(function (response) {
-
-            if (!response.registered) {
-                window.location.href = 'https://liff.line.me/1655673420-lYR3d0Bj'
-            }
-            if (!response.hasId) {
-                alert('ขออภัยคุณยังไม่สามารถใช้งานระบบนี้ได้')
-                liff.closeWindow()
-            }
-
-
-        });
-    }
-
-
-    liffInit('1655673420-45oGwWDX')
+    liffInit('1655673420-vzMJdxyk')
 
 </script>

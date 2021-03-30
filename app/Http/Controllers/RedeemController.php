@@ -12,12 +12,15 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class RedeemController extends Controller
 {
-    public function getInstaller()
+    public function getInstaller(Request $request)
     {
-        $line_uid = 'u12354654654'; //get line user id
+        // $line_uid = 'u12354654654'; //get line user id
+
+        $line_uid = $request->line_uid;
+
         $engineer = Engineer::where('line_uid', $line_uid)->first();
 
-        if(empty($engineer)){
+        if (empty($engineer)) {
             $registered = false;
             $hasId = false;
         } else {
@@ -41,13 +44,9 @@ class RedeemController extends Controller
     public function index(Request $request)
     {
 
-        $line_uid = 'u12354654654'; //get line user id TEMPORARY
+        // $line_uid = 'u12354654654'; //get line user id TEMPORARY
 
-        // $line_uid = $request->line_uid;
-
-
-
-
+        $line_uid = $request->line_uid;
 
         $engineer = Engineer::where('line_uid', $line_uid)->with([
             'points' => function ($q) {

@@ -410,9 +410,9 @@ $config['registered']= url('/registered');
                         .getProfile()
                         .then(profile => {
 
-                            if (!liff.isInClient()) {
-                                window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
-                            }
+                            // if (!liff.isInClient()) {
+                            //     window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
+                            // }
 
 
                             $('.uid').val(profile.userId);
@@ -431,7 +431,7 @@ $config['registered']= url('/registered');
 
     function checkRegister(uid) {
         var settings = {
-            "url": '' + `?line_uid=${uid}`,
+            "url": lConfig['checkRegister'] + `?line_uid=${uid}`,
 
             "method": "GET",
             "timeout": 0,
@@ -453,9 +453,9 @@ $config['registered']= url('/registered');
         });
     }
 
-    // $(document).ready(function () {
-    //     liffInit('1655673420-lYR3d0Bj')
-    // })
+    $(document).ready(function () {
+        liffInit('1655673420-Nqbl8d7a')
+    })
 </script>
 
 <script>

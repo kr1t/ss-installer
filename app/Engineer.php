@@ -59,13 +59,18 @@ class Engineer extends Model
         return $points->sum('point');
     }
 
-    public function getLastestRedeemAddressAttribute() {
-        $lastest = EngineerRedeem::select('address')
-            ->where('engineer_id', $this->attributes['id'])
-            ->orderBy('created_at', 'desc')
-            ->first();
-        $address = $lastest->address;
-        return $address;
+    public function getLastestRedeemAddressAttribute()
+    {
+        try {
+            $lastest = EngineerRedeem::select('address')
+                ->where('engineer_id', $this->attributes['id'])
+                ->latest()
+                ->first();
+            $address = $lastest->address;
+            return $address;
+        } catch (\Exception $e) {
+            return '-';
+        }
     }
 
     public function points()
