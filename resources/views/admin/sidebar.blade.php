@@ -16,6 +16,12 @@
                 <a class="nav-link" href="{{ url('/admin/point/import') }}">
                     Import Point Lists
                 </a>
+                <a class="nav-link" href="{{ url('/admin/permission/silver-import') }}">
+                    Import Silver Permission Lists
+                </a>
+                <a class="nav-link" href="{{ url('/admin/permission/gold-import') }}">
+                    Import Gold Permission Lists
+                </a>
 
             </nav>
 

@@ -18,10 +18,10 @@ class PointsImport implements ToModel, WithHeadingRow
 //        $engineer_id = (Engineer::where('installer_id', $row['Engineer_Code'])->first(['id']))->id;
 
         return new EngineerPoint([
-            'engineer_id' => $row['Engineer_Code'],
-            'point' => $row['Point'],
-            'created_at' => $row['Job_Source_Create'],
-            'updated_at' => $row['Job_Source_Update'],
+            'engineer_id' => $row['engineer_code'],
+            'point' => $row['point'],
+            'created_at' => $row['job_source_create'],
+            'updated_at' => $row['job_source_update'],
         ]);
     }
 }
