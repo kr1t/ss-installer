@@ -12,12 +12,15 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class RedeemController extends Controller
 {
-    public function getInstaller()
+    public function getInstaller(Request $request)
     {
-        $line_uid = 'u12354654654'; //get line user id
+        // $line_uid = 'u12354654654'; //get line user id
+
+        $line_uid = $request->line_uid;
+
         $engineer = Engineer::where('line_uid', $line_uid)->first();
 
-        if(empty($engineer)){
+        if (empty($engineer)) {
             $registered = false;
             $hasId = false;
         } else {
@@ -36,9 +39,14 @@ class RedeemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $line_uid = 'u12354654654'; //get line user id
+
+        // $line_uid = 'u12354654654'; //get line user id TEMPORARY
+
+        $line_uid = $request->line_uid;
 
         $engineer = Engineer::where('line_uid', $line_uid)->with([
             'points' => function ($q) {
@@ -65,7 +73,7 @@ class RedeemController extends Controller
      */
     public function create(Engineer $engineer, RedeemItem $item, $name)
     {
-        if($engineer->total >= $item->redeem_point)
+        if ($engineer->total >= $item->redeem_point)
             return view('frontend.redeem-item', compact('item', 'engineer'));
 
         return redirect()->route('redeem');
