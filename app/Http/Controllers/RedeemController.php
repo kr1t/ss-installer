@@ -12,6 +12,25 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class RedeemController extends Controller
 {
+    public function getInstaller()
+    {
+        $line_uid = 'u12354654654'; //get line user id
+        $engineer = Engineer::where('line_uid', $line_uid)->first();
+
+        if(empty($engineer)){
+            $registered = false;
+            $hasId = false;
+        } else {
+            $registered = true;
+            $hasId = empty($engineer->installer_id) ? false : true;
+        }
+
+        return [
+            'registered' => $registered,
+            'hasId' => $hasId
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +55,12 @@ class RedeemController extends Controller
             },
         ])->get()->first();
 
+        if (empty($engineer))
+            return redirect('/register');
 
+        if (empty($engineer->installer_id))
+            return view('frontend.error')->with('message', 'โปรดรอยืนยันการลงทะเบียน');
 
-        //   dd($engineer->total, $engineer->points, $engineer->points[1]->redeem_item->name);
 
         $redeemItems = RedeemItem::all();
 
