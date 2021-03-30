@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Engineer;
+use Illuminate\Support\Facades\DB;
+
+
 Auth::routes();
 
 Route::resource('/register', 'RegisterController');
@@ -25,6 +30,26 @@ Route::get('/installer/import', function () {
 
 Route::get('/home', function () {
     return redirect('admin/installer/import');
+});
+
+Route::get('/clean-data-engineers', function () {
+
+    $engineers = Engineer::all();
+    $usersUnique = $engineers->unique('line_uid');
+    $usersDupes = $engineers->diff($usersUnique);
+
+    foreach ($usersDupes as $dup) {
+        $dup->delete();
+    }
+    // dd($engineers, $usersUnique, $usersDupes);
+
+
+    return 'success';
+    // foreach ($duplicateRecords as $index => $record) {
+    //     if ($index > 0) {
+    //         $record->delete();
+    //     }
+    // }
 });
 
 
@@ -47,10 +72,20 @@ Route::get('/migrate', function () {
 })->middleware('auth');
 
 Route::get('/redeem', 'RedeemController@index')->name('redeem');
+Route::get('/redeem/check', 'RedeemController@getInstaller')->name('redeem.check');
 
-Route::get('/redeem-call', function () {
+Route::get('/call/redeem', function () {
     return view('frontend.call-redeem');
 });
+
+Route::get('/call/silver-exam', function () {
+    return view('frontend.call-exam-silver');
+});
+
+Route::get('/call/gold-exam', function () {
+    return view('frontend.call-exam-gold');
+});
+
 
 Route::get('/redeem/{engineer}{item}-{name}', 'RedeemController@create')->name('create.redeem');
 Route::post('redeem', 'RedeemController@store')->name('store.redeem');
