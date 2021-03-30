@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Export Installer Lists
+Import รายการคะแนน
 @endsection
 @section('content')
 <div class="container-fluid">

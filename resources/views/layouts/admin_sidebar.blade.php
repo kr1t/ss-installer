@@ -67,7 +67,7 @@
                     <a href="{{ url('/admin/installer/multicast/tel') }}" class="nav-link">
                         <i class="fas fa-phone-square"></i>
                         <p>
-                            Muticast By Tel No.
+                            Multicast By Tel No.
                         </p>
                     </a>
                 </li>

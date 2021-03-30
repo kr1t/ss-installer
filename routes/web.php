@@ -33,9 +33,13 @@ Route::get('/point/import', function () {
 })->middleware('auth');
 
 Route::post('/permission/silver-import', 'ExamController@importSilver')->name('importSilver')->middleware('auth');
-Route::get('/permission/silver-import', function () {return redirect('admin/exam/silver-import');})->middleware('auth');
+Route::get('/permission/silver-import', function () {
+    return redirect('admin/exam/silver-import');
+})->middleware('auth');
 Route::post('/permission/gold-import', 'ExamController@importGold')->name('importGold')->middleware('auth');
-Route::get('/permission/gold-import', function () {return redirect('admin/exam/gold-import');})->middleware('auth');
+Route::get('/permission/gold-import', function () {
+    return redirect('admin/exam/gold-import');
+})->middleware('auth');
 
 Route::get('/home', function () {
     return redirect('admin/installer/import');
@@ -65,6 +69,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('installer')->group(function () {
         Route::get('/export', 'AdminController@export')->middleware('auth');
         Route::get('/multicast/tel', 'AdminController@multicastByTel')->middleware('auth');
+        Route::post('/multicast/tel', 'AdminController@sendMulticastByTel')->middleware('auth');
 
         Route::get('/import', 'AdminController@import')->middleware('auth');
         Route::post('/import', 'RegisterController@importSubmit')->middleware('auth');
@@ -79,13 +84,13 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('permission')->group(function () {
-        Route::get('/silver-import', function (){
+        Route::get('/silver-import', function () {
             $permissions = [];
             return view('admin.permission.silver-import', compact('permissions'));
         })->middleware('auth');
         Route::post('/silver-import', 'ExamController@importSilverSubmit')->middleware('auth');
 
-        Route::get('/gold-import', function (){
+        Route::get('/gold-import', function () {
             $permissions = [];
             return view('admin.permission.gold-import', compact('permissions'));
         })->middleware('auth');

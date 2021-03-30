@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Maatwebsite\Excel\Facades\Excel;
 
+use Helpers\LineBot;
+
 class AdminController extends Controller
 {
     public function export()
@@ -25,6 +27,36 @@ class AdminController extends Controller
     public function multicastByTel()
     {
         return view('admin.multicast.tel');
+    }
+
+
+    public function sendMulticastByTel(Request $request)
+    {
+
+        $tels = explode(",", $request->tels);
+
+        foreach ($tels as $tel) {
+            $engineer = Engineer::where('tel', $tel)->first();
+
+            $bot = new LineBot(env('LINE_TOKEN', ''));
+            $success = [];
+            $fail = [];
+            try {
+
+                $bot->setUser($engineer->line_uid)->addText($request->message)->push();
+
+                if (isset($pushAPI['message'])) {
+                    array_push($fail, $engineer);
+                } else {
+                    $engineer->increment('notification_count');
+                    array_push($success, $engineer);
+                }
+            } catch (\Exception $e) {
+                array_push($fail, $engineer);
+            }
+        }
+
+        return redirect(url('admin/installer/multicast/tel'))->with('success', $success)->with('fail', $fail);
     }
 
     public function importPoint()
