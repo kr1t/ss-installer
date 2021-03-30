@@ -371,6 +371,8 @@
                                     </div>
 
                                     <input type="hidden" name="url" class="myUrl" value="{{ url('') }}">
+
+
                                 </div>
                             </form>
                         </div>

@@ -17,9 +17,18 @@ class RedeemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $line_uid = 'u12354654654'; //get line user id
+
+        $line_uid = 'u12354654654'; //get line user id TEMPORARY
+
+        // $line_uid = $request->line_uid;
+
+
+
+
 
         $engineer = Engineer::where('line_uid', $line_uid)->with([
             'points' => function ($q) {
@@ -27,7 +36,9 @@ class RedeemController extends Controller
             },
         ])->get()->first();
 
-//        dd($engineer->total, $engineer->points, $engineer->points[1]->redeem_item->name);
+
+
+        //   dd($engineer->total, $engineer->points, $engineer->points[1]->redeem_item->name);
 
         $redeemItems = RedeemItem::all();
 
@@ -41,7 +52,7 @@ class RedeemController extends Controller
      */
     public function create(Engineer $engineer, RedeemItem $item, $name)
     {
-        if($engineer->total >= $item->redeem_point)
+        if ($engineer->total >= $item->redeem_point)
             return view('frontend.redeem-item', compact('item', 'engineer'));
 
         return redirect()->route('redeem');

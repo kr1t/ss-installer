@@ -47,8 +47,12 @@ Route::get('/migrate', function () {
 })->middleware('auth');
 
 Route::get('/redeem', 'RedeemController@index')->name('redeem');
+
+Route::get('/redeem-call', function () {
+    return view('frontend.call-redeem');
+});
+
 Route::get('/redeem/{engineer}{item}-{name}', 'RedeemController@create')->name('create.redeem');
 Route::post('redeem', 'RedeemController@store')->name('store.redeem');
 Route::get('/{type}-exam', 'ExamController@exam');
 Route::post('submit-answer', 'ExamController@store')->name('store.answer');
-
