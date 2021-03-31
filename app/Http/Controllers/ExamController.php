@@ -17,27 +17,17 @@ class ExamController extends Controller
 {
     public function exam(Request $request, string $type)
     {
-        $line_uid = $request->line_uid; //get line user id
+        $line_uid = $request->line_uid;
 
-        $engineer = (Engineer::where('line_uid', $line_uid)->first(['id']));
+        $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
         $engineer_id = $engineer->id;
 
         $permission = ExamPermission::where('engineer_id', $engineer_id)
             ->where('level', $type)
             ->latest()->first();
 
-<<<<<<< HEAD
         if($permission) {
-            ($permission->type == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
-=======
-        $errorMsg = '';
-        if ($type == 'silver')
-            $type = 1;
-        else if ($type == 'gold')
-            $type = 2;
-        else
-            $errorMsg = 'ไม่พบหน้าที่ค้นหา';
->>>>>>> c9de6ac63f55d9194d003c1c0a55edc21b9d02c2
+            ($permission->level == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
 
             $errorMsg = '';
             if($type == 'silver')
@@ -54,7 +44,6 @@ class ExamController extends Controller
                 return view('frontend.error')->with('message', $errorMsg);
             }
 
-<<<<<<< HEAD
             $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
                 ->where('exam_type', $type)
                 ->first(['id']);
@@ -71,17 +60,6 @@ class ExamController extends Controller
                 }
 
                 return view('frontend.exam', compact('exams', 'engineer_id', 'type'));
-=======
-        if ($isSubmit == null && $engineer_level == $type) {
-            $jquery_exams = EngineerExam::where('type', $type)->get(['title', 'choice_1', 'choice_2', 'choice_3', 'choice_4']);
-            $exams = [];
-            foreach ($jquery_exams as $exam) {
-                $shuffle = [
-                    'title' => $exam->title,
-                    'choices' => collect([$exam->choice_1, $exam->choice_2, $exam->choice_3, $exam->choice_4])->shuffle(),
-                ];
-                array_push($exams, $shuffle);
->>>>>>> c9de6ac63f55d9194d003c1c0a55edc21b9d02c2
             }
 
             return view('frontend.success-exam-ag');
