@@ -107,16 +107,24 @@ Route::get('/migrate', function () {
 Route::get('/redeem', 'RedeemController@index')->name('redeem');
 Route::get('/redeem/check', 'RedeemController@getInstaller')->name('redeem.check');
 
-Route::get('/call/redeem', function () {
-    return view('frontend.call-redeem');
+
+Route::prefix('call')->group(function () {
+    Route::get('/redeem', function () {
+        return view('frontend.call-redeem');
+    });
+
+    Route::get('/silver-exam', function () {
+        return view('frontend.call-exam-silver');
+    });
+
+    Route::get('/gold-exam', function () {
+        return view('frontend.call-exam-gold');
+    });
 });
 
-Route::get('/call/silver-exam', function () {
-    return view('frontend.call-exam-silver');
-});
 
-Route::get('/call/gold-exam', function () {
-    return view('frontend.call-exam-gold');
+Route::prefix('richmenu')->group(function () {
+    Route::get('/linkAll', 'RichMenuController@linkAll');
 });
 
 
