@@ -17,12 +17,11 @@ class ExamController extends Controller
 {
     public function exam(Request $request, string $type)
     {
-        $line_uid = $request->line_uid;
+        try {
+            $line_uid = $request->line_uid;
 //        $line_uid = 'u12354654654';
 
-        $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
-        if ($engineer){
-
+            $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
             $engineer_id = $engineer->id;
 
             $permission = ExamPermission::where('engineer_id', $engineer_id)
@@ -69,7 +68,7 @@ class ExamController extends Controller
             } else {
                 return view('frontend.error')->with('message', 'ไม่มีสิทธิ์ทำข้อสอบ');
             }
-        } else {
+        } catch (\Exception $e) {
             return redirect('/register');
         }
     }
