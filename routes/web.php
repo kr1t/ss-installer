@@ -40,6 +40,7 @@ Route::post('/permission/gold-import', 'ExamController@importGold')->name('impor
 Route::get('/permission/gold-import', function () {
     return redirect('admin/exam/gold-import');
 })->middleware('auth');
+Route::get('/score/export', 'ExamController@exportSubmit')->middleware('auth');
 
 Route::get('/home', function () {
     return redirect('admin/installer/import');
@@ -95,6 +96,10 @@ Route::prefix('admin')->group(function () {
             return view('admin.permission.gold-import', compact('permissions'));
         })->middleware('auth');
         Route::post('/gold-import', 'ExamController@importGoldSubmit')->middleware('auth');
+    });
+
+    Route::prefix('score')->group(function () {
+        Route::get('/export', 'ExamController@export')->middleware('auth');
     });
 });
 

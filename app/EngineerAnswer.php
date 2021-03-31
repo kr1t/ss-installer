@@ -33,4 +33,8 @@ class EngineerAnswer extends Model
         'answer_19',
         'answer_20',
     ];
+
+    public function engineerInfo(){
+        return $this->hasOne('App\Engineer', 'id', 'engineer_id');
+    }
 }

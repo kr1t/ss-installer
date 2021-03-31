@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title')
+    Import รายชื่อระดับ silver
+@endsection
 
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        @include('admin.sidebar')
 
         <div class="col-md-9">
             @if(session()->has('success'))
@@ -41,8 +44,6 @@
             <div class="card">
                 <div class="card-header">Import </div>
                 <div class="card-body">
-
-                    <h1 class="mb-4">Import รายชื่อระดับ silver </h1>
                     <form action="{{ route('importSilver') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file" class="form-control">

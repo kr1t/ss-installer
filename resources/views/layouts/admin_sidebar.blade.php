@@ -64,6 +64,33 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('/admin/score/export') }}" class="nav-link">
+                        <i class="fas fa-poll"></i>
+                        <p>
+                            Export Score
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('/admin/permission/silver-import') }}" class="nav-link">
+                        <i class="fas fa-list-alt"></i>
+                        <p>
+                            Import Silver Permission
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('/admin/permission/gold-import') }}" class="nav-link">
+                        <i class="fas fa-list-alt"></i>
+                        <p>
+                            Import Gold Permission
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('/admin/installer/multicast/tel') }}" class="nav-link">
                         <i class="fas fa-phone-square"></i>
                         <p>

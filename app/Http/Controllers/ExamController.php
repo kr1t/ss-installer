@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Engineer;
 use App\EngineerAnswer;
 use App\EngineerExam;
-use App\EngineerPoint;
 use App\ExamPermission;
+use App\Exports\ScoreExport;
 use App\Http\Requests\AnswerRequest;
 use App\Imports\ExamPermissionImport;
-use App\Imports\PointsImport;
+use App\Imports\ScoreImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,6 +18,7 @@ class ExamController extends Controller
     public function exam(Request $request, string $type)
     {
         $line_uid = $request->line_uid;
+//        $line_uid = 'u12354654654';
 
         $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
         $engineer_id = $engineer->id;
@@ -100,6 +101,18 @@ class ExamController extends Controller
         return view('frontend.success-exam-ag');
     }
 
+    public function export()
+    {
+        return view('admin.exam.export');
+    }
+
+    public function exportSubmit(Request $request)
+    {
+        $request->validate([
+            'level' => 'required'
+        ]);
+        return Excel::download(new ScoreExport, $request->level.'-score-' . time() . '.xlsx');
+    }
 
     public function importSilver()
     {
