@@ -23,6 +23,10 @@
                     Import Gold Permission Lists
                 </a>
 
+                <a class="nav-link" href="{{ url('/admin/') }}">
+                    Muticast By Tel No.
+                </a>
+
             </nav>
 
         </div>

@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
+@section('title')
+Export Installer Lists
+@endsection
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        @include('admin.sidebar')
 
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-header">Export Installer Lists</div>
+        <div>
+            <div class="card w-100">
                 <div class="card-body">
 
 
@@ -25,7 +25,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 @endsection
 
