@@ -21,51 +21,56 @@ class ExamController extends Controller
 //        $line_uid = 'u12354654654';
 
         $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
-        $engineer_id = $engineer->id;
+        if ($engineer){
 
-        $permission = ExamPermission::where('engineer_id', $engineer_id)
-            ->where('level', $type)
-            ->latest()->first();
+            $engineer_id = $engineer->id;
 
-        if($permission) {
-            ($permission->level == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
+            $permission = ExamPermission::where('engineer_id', $engineer_id)
+                ->where('level', $type)
+                ->latest()->first();
 
-            $errorMsg = '';
-            if($type == 'silver')
-                $type = 1;
-            else if($type == 'gold')
-                $type = 2;
-            else
-                $errorMsg = 'ไม่พบหน้าที่ค้นหา';
+            if($permission) {
+                ($permission->level == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
 
-            if ($engineer_level != $type)
-                $errorMsg = 'ระดับไม่ถูกต้อง';
+                $errorMsg = '';
+                if($type == 'silver')
+                    $type = 1;
+                else if($type == 'gold')
+                    $type = 2;
+                else
+                    $errorMsg = 'ไม่พบหน้าที่ค้นหา';
 
-            if (!empty($errorMsg)) {
-                return view('frontend.error')->with('message', $errorMsg);
-            }
+                if ($engineer_level != $type)
+                    $errorMsg = 'ระดับไม่ถูกต้อง';
 
-            $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
-                ->where('exam_type', $type)
-                ->first(['id']);
-
-            if($isSubmit == null && $engineer_level == $type) {
-                $jquery_exams = EngineerExam::where('type', $type)->get(['title', 'choice_1', 'choice_2', 'choice_3', 'choice_4']);
-                $exams = [];
-                foreach ($jquery_exams as $exam) {
-                    $shuffle = [
-                        'title' => $exam->title,
-                        'choices' => collect([$exam->choice_1, $exam->choice_2, $exam->choice_3, $exam->choice_4])->shuffle(),
-                    ];
-                    array_push($exams,$shuffle);
+                if (!empty($errorMsg)) {
+                    return view('frontend.error')->with('message', $errorMsg);
                 }
 
-                return view('frontend.exam', compact('exams', 'engineer_id', 'type'));
-            }
+                $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
+                    ->where('exam_type', $type)
+                    ->first(['id']);
 
-            return view('frontend.success-exam-ag');
+                if($isSubmit == null && $engineer_level == $type) {
+                    $jquery_exams = EngineerExam::where('type', $type)->get(['title', 'choice_1', 'choice_2', 'choice_3', 'choice_4']);
+                    $exams = [];
+                    foreach ($jquery_exams as $exam) {
+                        $shuffle = [
+                            'title' => $exam->title,
+                            'choices' => collect([$exam->choice_1, $exam->choice_2, $exam->choice_3, $exam->choice_4])->shuffle(),
+                        ];
+                        array_push($exams,$shuffle);
+                    }
+
+                    return view('frontend.exam', compact('exams', 'engineer_id', 'type'));
+                }
+
+                return view('frontend.success-exam-ag');
+            } else {
+                return view('frontend.error')->with('message', 'ไม่มีสิทธิ์ทำข้อสอบ');
+            }
         } else {
-            return view('frontend.error')->with('message', 'ไม่มีสิทธิ์ทำข้อสอบ');
+            return redirect('/register');
         }
     }
 

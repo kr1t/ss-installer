@@ -17,7 +17,7 @@ class CreateExamPermissionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('engineer_id');
             $table->string('level');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
