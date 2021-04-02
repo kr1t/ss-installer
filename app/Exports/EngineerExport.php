@@ -24,13 +24,23 @@ class EngineerExport implements FromView
             $dateExplode = explode('-', $request->dates);
             $start = Carbon::parse($dateExplode[0])->format('Y-m-d 00:00');
             $end = Carbon::parse($dateExplode[1])->format('Y-m-d 23:59');
+            $type = $request->type;
 
             return view('exports.engineer', [
-                'enginneers' => Engineer::whereBetween('created_at', [$start, $end])->get()
+                'enginneers' => Engineer::where(function ($q) use ($type) {
+                    switch ($type) {
+                        case '1':
+                            $q->where('notification_count', '<', 1);
+                            break;
+                        case '2':
+                            $q->where('notification_count', '>', 0);
+                            break;
+                    }
+                })->whereBetween('created_at', [$start, $end])->get()
             ]);
         }
         return view('exports.engineer', [
-            'enginneers' => Engineer::all()
+            'enginneers' => Engineer::where('notification_count')->all()
         ]);
     }
 }

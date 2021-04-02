@@ -17,9 +17,15 @@ Export Installer Lists
 
                     <input type="text" class="daterange form-control" name="daterange" placeholder="กรุณาเลือกวันที่">
 
+                    <div class="form-group pt-2">
+                        <input type="radio" class="radio" checked name="type" value="1"> ยังไม่ได้รับ notification
+                        <input type="radio" class="radio" name="type" value="2"> รับ notification แล้ว
+                        <input type="radio" class="radio" name="type" value="3"> ทั้งหมด
+                    </div>
+
+
                     <div class=" mt-3">
                         <button class="btn btn-primary download-export">Download</button>
-
                     </div>
 
                 </div>
@@ -46,9 +52,11 @@ Export Installer Lists
         $('.download-export').click(function (e) {
             e.preventDefault();
 
+            let typeActive = $('.radio:checked').val()
+
             let url = '{{url('/installer/export')}}';
             let dateVal = $('.daterange').val()
-            window.location.href = `${url}?dates=${dateVal}`;
+            window.location.href = `${url}?dates=${dateVal}&type=${typeActive}`;
         })
     });
 </script>
