@@ -180,7 +180,7 @@ class RegisterController extends Controller
             [
                 'first_name_en' => "required|alpha|max:255",
                 'last_name_en' => "required|alpha|max:255",
-                'email' => "required|email|unique:users",
+                'email' => "required|email|unique:engineers",
                 'tel' => "required|min:9|max:13",
                 'type_of_work' => "required",
                 'province' => "required|max:255",
