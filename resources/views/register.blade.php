@@ -21,7 +21,7 @@
 
 
 
-    <div class="samsung-form" style="display: block;">
+    <div class="samsung-form" style="display: none;">
         @if (!$errors->any())
 
         <div class="container term" id="term">
@@ -410,9 +410,9 @@ $config['registered']= url('/registered');
                         .getProfile()
                         .then(profile => {
 
-                            // if (!liff.isInClient()) {
-                            //     window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
-                            // }
+                            if (!liff.isInClient()) {
+                                window.location.href = "https://line.me/R/ti/p/@samsungacinstaller"
+                            }
 
 
                             $('.uid').val(profile.userId);
@@ -443,7 +443,7 @@ $config['registered']= url('/registered');
         $.ajax(settings).done(function (response) {
 
             if (response.status) {
-                window.location.href = ''
+                window.location.href = lConfig['registered']
             }
 
             $('.samsung-form').show()
