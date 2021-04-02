@@ -25,7 +25,7 @@
                     <div style="display: none;">{{ $total -= $point->point }}</div>
                 @empty
                     <tr>
-                        <td>01/03/21</td>
+                        <td>ไม่มีประวัติคะแนน</td>
                     </tr>
                 @endforelse
             </tbody>

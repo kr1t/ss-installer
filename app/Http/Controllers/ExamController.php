@@ -19,7 +19,7 @@ class ExamController extends Controller
     {
         try {
             $line_uid = $request->line_uid;
-//        $line_uid = 'u12354654654';
+//            $line_uid = 'u12354654654';
 
             $engineer = Engineer::where('line_uid', $line_uid)->first(['id']);
             $engineer_id = $engineer->id;
@@ -28,7 +28,7 @@ class ExamController extends Controller
                 ->where('level', $type)
                 ->latest()->first();
 
-            if($permission) {
+            if($permission != null) {
                 ($permission->level == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
 
                 $errorMsg = '';

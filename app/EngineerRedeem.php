@@ -14,4 +14,12 @@ class EngineerRedeem extends Model
         'tel',
         'redeem_item_id'
     ];
+
+    public function engineerInfo(){
+        return $this->hasOne('App\Engineer', 'id', 'engineer_id');
+    }
+
+    public function redeemItem(){
+        return $this->hasOne('App\RedeemItem', 'id', 'redeem_item_id');
+    }
 }

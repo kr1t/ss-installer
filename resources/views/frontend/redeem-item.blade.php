@@ -13,6 +13,7 @@
                 </div>
                 <form class="form-horizontal" id="redeem-form" method="post" action="{{ route('store.redeem') }}">
                     @csrf
+                    <input type="text" name="line_uid" value="{{ $line_uid }}" hidden>
                     <input type="number" value="{{ $engineer->id }}" name="engineer_id" hidden>
                     <input type="number" value="{{ $item->id }}" name="redeem_item_id" hidden>
                     <input type="number" value="{{ $item->redeem_point*(-1) }}" name="point" hidden>

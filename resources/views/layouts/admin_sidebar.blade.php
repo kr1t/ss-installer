@@ -64,6 +64,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('/admin/redeem/export') }}" class="nav-link">
+                        <i class="fas fa-star"></i>
+                        <p>
+                            Export Redeem Lists
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('/admin/score/export') }}" class="nav-link">
                         <i class="fas fa-poll"></i>
                         <p>

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Engineer;
 use App\EngineerPoint;
 use App\EngineerRedeem;
+use App\Exports\RedeemExport;
 use App\Http\Requests\EngineerRedeemRequest;
 use App\RedeemItem;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast\Object_;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RedeemController extends Controller
 {
@@ -43,8 +44,7 @@ class RedeemController extends Controller
 
     public function index(Request $request)
     {
-
-        // $line_uid = 'u12354654654'; //get line user id TEMPORARY
+//         $line_uid = 'u12354654654'; //get line user id TEMPORARY
 
         $line_uid = $request->line_uid;
 
@@ -63,7 +63,7 @@ class RedeemController extends Controller
 
         $redeemItems = RedeemItem::all();
 
-        return view('frontend.redeem', compact('engineer', 'redeemItems'));
+        return view('frontend.redeem', compact('engineer', 'redeemItems', 'line_uid'));
     }
 
     /**
@@ -71,12 +71,13 @@ class RedeemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Engineer $engineer, RedeemItem $item, $name)
+    public function create(Engineer $engineer, RedeemItem $item, $name, Request $request)
     {
+        $line_uid = $request->line_uid;
         if ($engineer->total >= $item->redeem_point)
-            return view('frontend.redeem-item', compact('item', 'engineer'));
+            return view('frontend.redeem-item', compact('item', 'engineer', 'line_uid'));
 
-        return redirect()->route('redeem');
+        return redirect('/call/redeem');
     }
 
     /**
@@ -93,51 +94,16 @@ class RedeemController extends Controller
         $log_point['engineer_redeem_id'] = $engineer_redeem_id;
         EngineerPoint::create($log_point);
 
-        return redirect()->route('redeem');
+        return redirect('/call/redeem');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function export()
     {
-        //
+        return view('admin.redeem.export');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function exportSubmit(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return Excel::download(new RedeemExport, 'redeem-' . time() . '.xlsx');
     }
 }

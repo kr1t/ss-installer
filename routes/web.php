@@ -41,6 +41,7 @@ Route::get('/permission/gold-import', function () {
     return redirect('admin/exam/gold-import');
 })->middleware('auth');
 Route::get('/score/export', 'ExamController@exportSubmit')->middleware('auth');
+Route::get('/redeem/export', 'RedeemController@exportSubmit')->middleware('auth');
 
 Route::get('/home', function () {
     return redirect('admin/installer/import');
@@ -100,6 +101,10 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('score')->group(function () {
         Route::get('/export', 'ExamController@export')->middleware('auth');
+    });
+
+    Route::prefix('redeem')->group(function () {
+        Route::get('/export', 'RedeemController@export')->middleware('auth');
     });
 });
 
