@@ -454,7 +454,7 @@ $config['registered']= url('/registered');
     }
 
     $(document).ready(function () {
-        liffInit('1655673420-Nqbl8d7a')
+        liffInit('1655673420-lYR3d0Bj')
     })
 </script>
 
