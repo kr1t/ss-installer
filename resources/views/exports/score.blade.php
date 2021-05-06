@@ -23,6 +23,7 @@
             <th>Answer 18</th>
             <th>Answer 19</th>
             <th>Answer 20</th>
+            <th>Created At</th>
         </tr>
     </thead>
 
@@ -51,6 +52,7 @@
             <td>{{ isset($score->answer_18) ? strval($score->answer_18): '' }}</td>
             <td>{{ isset($score->answer_19) ? strval($score->answer_19): '' }}</td>
             <td>{{ isset($score->answer_20) ? strval($score->answer_20): '' }}</td>
+            <td>{{ isset($score->created_at) ? strval($score->created_at): '' }}</td>
 
         </tr>
         @endforeach

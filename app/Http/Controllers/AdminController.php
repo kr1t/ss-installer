@@ -63,7 +63,17 @@ class AdminController extends Controller
     {
         if (!empty(request()->file('file'))) {
             $pointImports = Excel::toArray(new PointsImport, request()->file('file'));
-            $points = $pointImports[0];
+            $df_points = $pointImports[0];
+
+            $points = [];
+
+            foreach ($df_points as $point) {
+                if (!empty($point['engineer_code'])){
+                    array_push($points, $point);
+                }
+            }
+
+//            dd($points);
 
             return view('admin.point.import', compact('points'));
         }
@@ -95,4 +105,6 @@ class AdminController extends Controller
 
         return redirect('/admin/point/import')->with('success', $success)->with('fail', $fail);
     }
+
+
 }

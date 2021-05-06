@@ -16,7 +16,6 @@ class PointsImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
 //        $engineer_id = (Engineer::where('installer_id', $row['Engineer_Code'])->first(['id']))->id;
-
         return new EngineerPoint([
             'engineer_id' => $row['engineer_code'],
             'point' => $row['point'],
@@ -24,4 +23,13 @@ class PointsImport implements ToModel, WithHeadingRow
             'updated_at' => $row['job_source_update'],
         ]);
     }
+
+    public function rules(): array
+    {
+        return [
+            'engineer_code' => 'required',
+        ];
+    }
+
+
 }
