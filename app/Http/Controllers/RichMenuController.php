@@ -7,7 +7,7 @@ use App\Engineer;
 
 class RichMenuController extends Controller
 {
-    public $memberRichMenuId = "richmenu-2751524d061c3f60f01f7457b9131e2e";
+    public $memberRichMenuId = "richmenu-f8b0710013ea62988e8d72f87f8c7b2d";
     public function linkAll()
     {
         $curl = curl_init();
@@ -39,6 +39,6 @@ class RichMenuController extends Controller
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response;
+        return $engineers;
     }
 }
