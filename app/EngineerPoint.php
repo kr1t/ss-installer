@@ -11,7 +11,9 @@ class EngineerPoint extends Model
         'engineer_id',
         'point',
         'redeem_item_id',
-        'engineer_redeem_id'
+        'engineer_redeem_id',
+        'created_at',
+//        'updated_at',
     ];
 
     protected $appends = ['redeem_item'];

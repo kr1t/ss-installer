@@ -63,6 +63,7 @@ Import รายการคะแนน
                     <table class="table mt-3 table-strip table-responsive">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Engineer Code</th>
                                 <th>Point</th>
                                 <th>Job Source Create</th>
@@ -76,10 +77,11 @@ Import รายการคะแนน
 
                             @foreach($points as $key=>$point)
                             <tr>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $point['engineer_code'] }}</td>
                                 <td>{{ $point['point'] }}</td>
-                                <td>{{ $point['job_source_create'] }}</td>
-                                <td>{{ $point['job_source_update'] }}</td>
+                                <td>{{ \Carbon\Carbon::parse($point['job_source_create'])->format('d/m/Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($point['job_source_update'])->format('d/m/Y') }}</td>
 
                                 {{-- <td><input type="checkbox" name="import[{{ $point }}]" id="" checked></td>--}}
 
@@ -92,8 +94,8 @@ Import รายการคะแนน
                     <div class="mt-2 text-center">
 
                         <hr>
-                        <button class="btn btn-primary ">Push</button>
-                        <button class="btn btn-secondary">Cancel</button>
+                        <button class="btn btn-primary " type="submit">Push</button>
+                        <a class="btn btn-secondary" href="{{ url('/admin/point/import') }}">Cancel</a>
                     </div>
                 </form>
                 @endif
