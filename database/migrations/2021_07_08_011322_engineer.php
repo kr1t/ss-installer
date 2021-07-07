@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Engineer extends Migration
+class EngineerLastesdPoint extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class Engineer extends Migration
     public function up()
     {
         Schema::table('engineers', function (Blueprint $table) {
-            // $table->integer('notification_count')->default(0);
+            $table->datetime('last_updated_point_at');
         });
     }
 
@@ -25,6 +25,6 @@ class Engineer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('engineers');
+        //
     }
 }

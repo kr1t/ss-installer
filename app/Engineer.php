@@ -24,10 +24,15 @@ class Engineer extends Model
         'installer_id',
         'point',
         'notification_count',
+        'province_text'
     ];
 
     public function getProvinceAttribute($q)
     {
+        if ($this->province_text) {
+            return $this->province_text;
+        }
+
         $provinces = Factory::province();
         $province = $provinces->find($q);
         return $province['name_th'];

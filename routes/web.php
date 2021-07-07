@@ -142,3 +142,5 @@ Route::get('/redeem/{engineer}{item}-{name}', 'RedeemController@create')->name('
 Route::post('redeem', 'RedeemController@store')->name('store.redeem');
 Route::get('/{type}-exam', 'ExamController@exam');
 Route::post('submit-answer', 'ExamController@store')->name('store.answer');
+Route::get('user/{line_uid}/point', 'RedeemController@getUserPoint');
+Route::get('sync/engineer', 'SyncController@syncEngineer');
