@@ -111,9 +111,40 @@ class RedeemController extends Controller
         return view('frontend.redeem', compact('engineer', 'redeemItems', 'line_uid'));
     }
 
+    public function getToken()
+    {
+        try {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://www.ss-swatinhome.com/installer-service/token',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_POSTFIELDS => 'grant_type=password&line_id=eng_sync_not_remove',
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/x-www-form-urlencoded'
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            return json_decode($response, true)['access_token'];
+        } catch (\Exception $e) {
+            return [];
+        }
+    }
+
+
     public function updatePoint($code_engineer, $start_date, $end_date)
     {
         try {
+            $token = $this->getToken();
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL => 'https://www.ss-swatinhome.com/service/api/member/jobs_point',
@@ -131,7 +162,7 @@ class RedeemController extends Controller
                     "size" => 500,
                 ]),
                 CURLOPT_HTTPHEADER => array(
-                    'Authorization: bearer VmQrFxtecxr8V3XORTwsuZYotneMzm7YdCnw7zX3hhQlsQpw08eDpdI2bwLOe9HqPWWT8zeU-HtH2bb039FochQ-iNAIsEUdRJujlXEhedhXqSqt4T3n8Rwp2ahq-9jJoejc8DwSQEaHg-e0L-xB5JQGmwb__e1y-0MH1jjEKcQaxvBXlH8nXgvZJ_po0BBuSMpW805dhTJwGqlRyHj58HaG70XAXNIPJehJfW7R3AFbP-Sw_S6t7-oe18NDY_wMmqf-KDeGlQr48ayO9ANWKLjoId0GDE26krJFafx5f-1i5ZsJf4HL5-HtBA6YREZrTvnROA1hW1gACxnqSnqjZjcN1cFWB0jeIxLj-uwEI-giLO32jM4Hq4pV8rzhGUdsn68Cdyur41nwtVVyRVE254zupyVyhDrDdlcDuC59956m4fvDYpA9pgZCz9vB2x1yzWh1afiRKwpifTM5W8csPHb4TQ7HQZC9-ma11A_IrCLZ63kYEcw5wJIQE3VOwqhSKVcPsraEG66iz5xbpUNbydDVd6-_v-WNbhELia8qlteRdC6tenWW11ZwWduzol_LwZHtpuZjSEv2xHGLqp6zAg',
+                    "Authorization: bearer {$token}",
                     'Content-Type: application/json'
                 ),
             ));
