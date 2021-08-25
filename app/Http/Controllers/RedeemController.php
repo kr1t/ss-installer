@@ -82,12 +82,17 @@ class RedeemController extends Controller
 
         $redeemItems = RedeemItem::all();
 
-        $start_date = '2021-06-05 00:00:00';
-        $end_date = Carbon::now();
+        $start_date = '2021-07-30 00:00:00';
+        $end_date = Carbon::now()->format('Y-m-d H:i:s');
 
 
-        // return $engineer;
+
         $apiGetPoints = $this->updatePoint($engineer->installer_id, $start_date, $end_date);
+
+
+        if ($request->test) {
+            return $apiGetPoints;
+        }
         foreach ($apiGetPoints as $point) {
             if ($point['jobs_status'] == 1) {
                 // Check By ID
@@ -134,6 +139,8 @@ class RedeemController extends Controller
             $response = curl_exec($curl);
 
             curl_close($curl);
+
+
             return json_decode($response, true)['access_token'];
         } catch (\Exception $e) {
             return [];
@@ -147,7 +154,7 @@ class RedeemController extends Controller
             $token = $this->getToken();
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://www.ss-swatinhome.com/service/api/member/jobs_point',
+                CURLOPT_URL => 'https://www.ss-swatinhome.com/installer-service/api/member/jobs_point',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -168,8 +175,19 @@ class RedeemController extends Controller
             ));
 
             $response = curl_exec($curl);
-
             curl_close($curl);
+            if (request()->test) {
+                return [
+                    "request" => [
+                        "code_engineer" => $code_engineer,
+                        "start_date" => $start_date,
+                        "end_date" => $end_date,
+                        "size" => 500,
+                    ],
+                    "response" => json_decode($response, true)
+                ];
+            }
+
             return json_decode($response, true)['Result'];
         } catch (\Exception $e) {
             return [];
