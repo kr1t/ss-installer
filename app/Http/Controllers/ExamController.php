@@ -28,7 +28,7 @@ class ExamController extends Controller
                 ->where('level', $type)
                 ->latest()->first();
 
-            if($permission != null) {
+            if(!empty($permission)) {
                 ($permission->level == 'silver' ? $engineer_level = 1 : $engineer_level = 2); // $engineer->level ; 1 silver, 2 gold
 
                 $errorMsg = '';
@@ -46,11 +46,12 @@ class ExamController extends Controller
                     return view('frontend.error')->with('message', $errorMsg);
                 }
 
-                $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
-                    ->where('exam_type', $type)
-                    ->first(['id']);
+//                $isSubmit = EngineerAnswer::where('engineer_id', $engineer_id)
+//                    ->where('exam_type', $type)
+//                    ->first(['id']);
+                $isSubmit = null;
 
-                if($isSubmit == null && $engineer_level == $type) {
+                if($isSubmit == null && $engineer_level == $type && empty($permission->status)) {
                     $jquery_exams = EngineerExam::where('type', $type)->get(['title', 'choice_1', 'choice_2', 'choice_3', 'choice_4']);
                     $exams = [];
                     foreach ($jquery_exams as $exam) {
@@ -79,9 +80,10 @@ class ExamController extends Controller
         $input = $request->all();
         $type = $input['exam_type'];
 
-        $isSubmit = EngineerAnswer::where('engineer_id', $input['engineer_id'])
-            ->where('exam_type', $type)
-            ->first(['id']);
+//        $isSubmit = EngineerAnswer::where('engineer_id', $input['engineer_id'])
+//            ->where('exam_type', $type)
+//            ->first(['id']);
+        $isSubmit = null;
 
         if ($isSubmit == null) {
             $correct_choices = (EngineerExam::where('type', $type)->get(['correct_choice']));

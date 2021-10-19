@@ -17,7 +17,7 @@
                                 <span>{{ $redeemItem->redeem_point }} <small>คะแนน</small> </span>
                                 <button
                                     class="btn button-ss "
-                                    @if($engineer->total <= $redeemItem->redeem_point) disabled @endif
+                                    @if($engineer->total < $redeemItem->redeem_point) disabled @endif
                                     onclick="{{$engineer->total >= $redeemItem->redeem_point ? 'window.location=\''.route("create.redeem", [$engineer, $redeemItem, $redeemItem->name]).'?line_uid='.$line_uid.'\'' : 'popup()'}}"
                                     type="button"
                                 >
