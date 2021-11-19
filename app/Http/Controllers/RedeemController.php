@@ -96,7 +96,7 @@ class RedeemController extends Controller
         foreach ($apiGetPoints as $point) {
             if ($point['jobs_status'] == 1) {
                 // Check By ID
-                $findReedeemPoint = RedeemPoint::select('id')->where('job_id', $point['job_id'])->where("engineer_id", $engineer->id)->first();
+                $findReedeemPoint = RedeemPoint::select('id')->where('job_id', $point['job_id'])->where("engineer_id", $engineer->id)->where('point', '!=', 0)->first();
                 if (!$findReedeemPoint) {
                     RedeemPoint::create([
                         "job_id" => $point['job_id'],

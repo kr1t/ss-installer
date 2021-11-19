@@ -15,6 +15,7 @@
             <tbody>
                 <div style="display: none;">{{ $total = $engineer->total }}</div>
                 @forelse(($engineer->points) as $key=>$point)
+                    @if($point->point > 0)
                     <div style="display: none;">{{ $isRedeem = ($point->redeem_item_id != null) }}</div>
                     <tr>
                         <td>{{ date('d/m/Y', strtotime($point->created_at)) }}</td>
@@ -23,6 +24,7 @@
                         <td>{{$total}}</td>
                     </tr>
                     <div style="display: none;">{{ $total -= $point->point }}</div>
+                    @endif
                 @empty
                     <tr>
                         <td>ไม่มีประวัติคะแนน</td>
