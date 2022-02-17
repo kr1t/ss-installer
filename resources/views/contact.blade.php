@@ -16,15 +16,49 @@
 
 </head>
 
+<style>
+    .contactCenter {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 5px;
+    }
+
+    #divElement {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .btnPrimary {
+        background-color: #0a29b4;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+
+    html {
+        background-color: #0b2dc7;
+    }
+</style>
+
 <body>
+    <div id="divElement" class="container term ">
+        <div class="card contactCenter shadow">
+            <div class="card-body p-5">
+                <h4 class="font-weight-bold">ติดต่อสายด่วนช่างแอร์</h4>
+                <h6 class="pt-2">02-689-3255</h6>
 
+            </div>
+            <div class="card-footer">
+                <a href="tel:026893255">
+                    <button class="btn btn-primary w-100 btnPrimary shadow-m">โทร</button>
+                </a>
+            </div>
+        </div>
 
-
-
-    <div class="container">
-        <h4>ติดต่อสายด่วนช่างแอร์</h4>
-        <h6>09122212123</h6>
-        <button>โทร</button>
     </div>
 </body>
 
