@@ -20,6 +20,9 @@ Auth::routes();
 Route::resource('/register', 'RegisterController');
 Route::get('/thankyou', 'RegisterController@thankyou');
 Route::get('/registered', 'RegisterController@registered');
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 Route::get('/installer/export', 'RegisterController@export')->middleware('auth');
 Route::post('/installer/import', 'RegisterController@import')->name('import')->middleware('auth');
